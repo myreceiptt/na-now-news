@@ -13,7 +13,7 @@
 > Here are some ideas to get you started:
 
 ```coffeescript
-This is the repos of the frontend of the website of the Na Now News of the BANANOW.LAND of the ENDHONESA, the only country in The Melting Land.
+This is the repos of the frontend of the website of the Na Now News of the BANANOW.LAND of the ENDHONESA, the only country in The Melting Land. Read all of it, OiOi!
 ```
 
 > Regards
