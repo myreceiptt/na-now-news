@@ -31,7 +31,7 @@ export default function Alert({ preview }) {
                 target="_blank"
                 className="underline hover:text-success duration-200 transition-colors"
               >
-                The Green Print
+                The Green Print{' '}
               </a>
               of BANANOW.
             </>
