@@ -10,6 +10,7 @@ export default function Intro() {
         Slow but surely updated by the{' '}
         <a
           href="https://www.bananow.land/#farmers"
+          target="_blank"
           className="underline hover:text-success duration-200 transition-colors"
         >
           Farmers
@@ -17,6 +18,7 @@ export default function Intro() {
         of{' '}
         <a
           href={CMS_URL}
+          target="_blank"
           className="underline hover:text-success duration-200 transition-colors"
         >
           {CMS_NAME}

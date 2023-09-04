@@ -25,14 +25,15 @@ export default function Alert({ preview }) {
             </>
           ) : (
             <>
-              The source code for this blog is{' '}
+              The B2B information for this blog is written in{' '}
               <a
-                href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
+                href={`${EXAMPLE_PATH}`}
+                target="_blank"
                 className="underline hover:text-success duration-200 transition-colors"
               >
-                available on GitHub
+                The Green Print
               </a>
-              .
+              of BANANOW.
             </>
           )}
         </div>
