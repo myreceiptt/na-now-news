@@ -25,15 +25,15 @@ export default function Alert({ preview }) {
             </>
           ) : (
             <>
-              The B2B information for this blog is written in{' '}
+              The B2B information for this blog is written in the{' '}
               <a
                 href={`${EXAMPLE_PATH}`}
                 target="_blank"
                 className="underline hover:text-success duration-200 transition-colors"
               >
-                The Green Print{' '}
+                Green Print of BANANOW
               </a>
-              of BANANOW.
+              .
             </>
           )}
         </div>
