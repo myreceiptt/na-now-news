@@ -43,3 +43,32 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     revalidate: 10,
   }
 }
+
+export async function getAllPostsForWordPress({ preview = false }) {
+  const allPosts = await getAllPostsForHome(preview)
+
+  return {
+    props: { allPosts, preview },
+    revalidate: 7,
+  }
+}
+
+// // Get the first 11 posts from WordPress, ordered by the date
+// export async function getAllPostsForWordPress(preview) {
+//   const data = await fetchAPI(`
+//     query AllPosts {
+//       posts(first: 11, where: { orderby: { field: DATE, order: DESC } }) {
+//         edges {
+//           node {
+//             title
+//             slug
+//             date(formatString: "MMMM DD, YYYY")
+//             excerpt
+//             author
+//           }
+//         }
+//       }
+//     }
+//   `)
+//   return data.posts
+// }
