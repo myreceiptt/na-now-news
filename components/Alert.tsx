@@ -1,5 +1,5 @@
-import Container from "./Container";
-import cn from "classnames";
+import Container from './Container'
+import cn from 'classnames';
 import { EXAMPLE_PATH } from "../lib/constants";
 
 export default function Alert({ preview }) {
