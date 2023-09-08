@@ -1,6 +1,6 @@
-import Alert from './Alert'
-import Footer from './Footer'
-import Meta from './Meta'
+import Alert from './alert'
+import Footer from './footer'
+import Meta from './meta'
 
 export default function Layout({ preview, children }) {
   return (
