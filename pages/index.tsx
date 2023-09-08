@@ -44,22 +44,22 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   }
 }
 
-// Get the first 11 posts from WordPress, ordered by the date
-export async function getAllPostsForWordPress(preview) {
-  const data = await fetchAPI(`
-    query AllPosts {
-      posts(first: 11, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            title
-            slug
-            date(formatString: "MMMM DD, YYYY")
-            excerpt
-            author
-          }
-        }
-      }
-    }
-  `)
-  return data.posts
-}
+// // Get the first 11 posts from WordPress, ordered by the date
+// export async function getAllPostsForWordPress(preview) {
+//   const data = await fetchAPI(`
+//     query AllPosts {
+//       posts(first: 11, where: { orderby: { field: DATE, order: DESC } }) {
+//         edges {
+//           node {
+//             title
+//             slug
+//             date(formatString: "MMMM DD, YYYY")
+//             excerpt
+//             author
+//           }
+//         }
+//       }
+//     }
+//   `)
+//   return data.posts
+// }
