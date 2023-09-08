@@ -1,8 +1,8 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import PostTitle from './post-title'
-import Categories from './categories'
+import Avatar from './Avatar'
+import Date from './Date'
+import CoverImage from './CoverImage'
+import PostTitle from './PostTitle'
+import Categories from './Categories'
 
 export default function PostHeader({
   title,

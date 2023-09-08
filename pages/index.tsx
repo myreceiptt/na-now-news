@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
+import Container from '../components/Container'
+import MoreStories from '../components/MoreStories'
+import HeroPost from '../components/HeroPost'
+import Intro from '../components/Intro'
+import Layout from '../components/Layout'
 import { getAllPostsForHome } from '../lib/api'
 import { CMS_NAME } from '../lib/constants'
 
@@ -40,35 +40,26 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
   return {
     props: { allPosts, preview },
-    revalidate: 10,
-  }
-}
-
-export async function getAllPostsForWordPress({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview)
-
-  return {
-    props: { allPosts, preview },
     revalidate: 7,
   }
 }
 
-// // Get the first 11 posts from WordPress, ordered by the date
-// export async function getAllPostsForWordPress(preview) {
-//   const data = await fetchAPI(`
-//     query AllPosts {
-//       posts(first: 11, where: { orderby: { field: DATE, order: DESC } }) {
-//         edges {
-//           node {
-//             title
-//             slug
-//             date(formatString: "MMMM DD, YYYY")
-//             excerpt
-//             author
-//           }
-//         }
-//       }
-//     }
-//   `)
-//   return data.posts
-// }
+// Get the first 11 posts from WordPress, ordered by the date
+export async function getAllPostsForWordPress(preview) {
+  const data = await fetchAPI(`
+    query AllPosts {
+      posts(first: 11, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            title
+            slug
+            date(formatString: "MMMM DD, YYYY")
+            excerpt
+            author
+          }
+        }
+      }
+    }
+  `)
+  return data.posts
+}
