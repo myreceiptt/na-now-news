@@ -1,5 +1,4 @@
 import { CMS_NAME, CMS_URL } from '../lib/constants';
-import NavBar from './01NavBar';
 
 export default function Intro() {
   return (
