@@ -13,7 +13,7 @@ export default function Alert({ preview }) {
               This is a page preview.{" "}
               <a
                 href="/api/exit-preview"
-                className="text-primary hover:text-secondary"
+                className="link link-secondary"
               >
                 Click here
               </a>{" "}
@@ -28,7 +28,7 @@ export default function Alert({ preview }) {
               <a
                 href={`${EXAMPLE_PATH}`}
                 target="_blank"
-                className="text-primary hover:text-secondary"
+                className="link link-secondary"
               >
                 Green Print of BANANOW
               </a>

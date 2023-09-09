@@ -4,7 +4,7 @@ export default function Intro() {
   return (
     <>
       <section className="flex flex-col sm:flex-row items-center sm:justify-between mt-8 mb-8">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold sm:text-left text-center tracking-tighter">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold sm:text-left text-center tracking-tighter">
           Na Now News
         </h1>
         <h4 className="text-center sm:text-right text-sm lg:text-base mt-5">
@@ -12,7 +12,7 @@ export default function Intro() {
           <a
             href="https://www.bananow.land/#farmers"
             target="_blank"
-            className="text-primary hover:text-secondary"
+            className="link link-secondary"
           >
             Farmers
           </a>{' '}
@@ -20,7 +20,7 @@ export default function Intro() {
           <a
             href={CMS_URL}
             target="_blank"
-            className="text-primary hover:text-secondary"
+            className="link link-secondary"
           >
             {CMS_NAME}
           </a>
