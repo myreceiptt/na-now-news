@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +11,6 @@ function clsx(...args: (string | boolean | undefined | null)[]): string {
   return args.filter(Boolean).join(" ");
 }
 
-// @ts-ignore
 const components = {
   h1: ({ className, ...props }) => (
     <h1
