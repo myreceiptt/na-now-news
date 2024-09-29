@@ -10,6 +10,7 @@ function clsx(...args: (string | boolean | undefined | null)[]): string {
   return args.filter(Boolean).join(" ");
 }
 
+// @ts-ignore
 const components = {
   h1: ({ className, ...props }) => (
     <h1
@@ -107,7 +108,7 @@ const components = {
     // eslint-disable-next-line @next/next/no-img-element
     <span>
       <span>
-        <Image className={clsx("rounded-md", className)} alt={alt} {...props} />
+        <img className={clsx("rounded-md", className)} alt={alt} {...props} />
       </span>
     </span>
   ),
