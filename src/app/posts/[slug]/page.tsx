@@ -3,6 +3,8 @@ import { allPosts } from "contentlayer/generated";
 import { Mdx } from "@/app/components/mdx";
 import Link from "next/link";
 import Image from "next/image";
+import Footer from "@/app/components/footer";
+import Header from "@/app/components/header";
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
@@ -20,89 +22,54 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   // const Content = getMDXComponent(post.body.code);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center">
-        <Image
-          className="items-center"
-          src="/images/logos/na-now-news.svg"
-          alt="Na Now News Illustration"
-          width={320}
-          height={240}
-          priority
-        />
-        <h1 className="text-3xl font-bold font-[family-name:var(--font-judul)]">
-          {post.title}
-        </h1>
-        <div className="flex gap-2 items-center flex-wrap justify-center">
-          {post.categories.map((category: string) => (
-            <Link
-              key={category}
-              href={`/category/${category.toLowerCase()}`}
-              className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm hover:bg-blue-200"
-            >
-              {category}
-            </Link>
-          ))}
-        </div>
-        <time dateTime={post.date} className="text-sm text-gray-600">
-          {format(parseISO(post.date), "LLLL d, yyyy")}
-        </time>
-        <article className="mx-auto max-w-2xl">
+    <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">
+      <Header />
+      <main className="mx-auto max-w-3xl flex flex-col items-center gap-8">
+        <article className="border-b border-dark-now dark:border-light-now">
+          <Image
+            src={post.gambar}
+            alt={post.title}
+            className="rounded-md mb-4"
+            width={768}
+            height={256}
+            priority
+          />
+          <h2 className="text-xl sm:text-2xl font-judul text-green-now dark:text-yellow-now">
+            {post.title}
+          </h2>
+          <time
+            dateTime={post.date}
+            className="block text-sm sm:text-base text-yellow-now dark:text-green-now font-judul"
+          >
+            {format(parseISO(post.date), "LLLL d, yyyy")}
+          </time>
           <Mdx code={post.body.code} />
-          <div className="mt-12">
-            <Link href="/" className="text-blue-700 hover:text-blue-900">
-              ← Back to Home
+          <h4 className="text-sm sm:text-base mt-4">
+            Author:{" "}
+            <Link
+              href={`${post.link}`}
+              className="text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now"
+            >
+              {post.penulis}
             </Link>
+          </h4>
+          <h5 className="text-sm sm:text-base mt-1">
+            Published under these categories:
+          </h5>
+          <div className="flex flex-wrap gap-2 justify-items-start mt-2 mb-8">
+            {post.categories.map((category: string) => (
+              <Link
+                key={category}
+                href={`/category/${category.toLowerCase()}`}
+                className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
+              >
+                {category}
+              </Link>
+            ))}
           </div>
         </article>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/base/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          On Market
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/basescan/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          On Basescan
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to The Land →
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 };

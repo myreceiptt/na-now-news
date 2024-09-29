@@ -10,6 +10,8 @@ export const Post = defineDocumentType(() => ({
     description: { type: "string", required: true },
     categories: { type: "list", of: { type: "string" }, required: true },
     gambar: { type: "string", required: true },
+    penulis: { type: "string", required: true },
+    link: { type: "string", required: false },
   },
   computedFields: {
     url: {

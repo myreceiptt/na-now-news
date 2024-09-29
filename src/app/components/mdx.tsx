@@ -78,15 +78,15 @@ const components = {
   a: CustomLink,
   p: ({ className, ...props }) => (
     <p
-      className={clsx("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={clsx("leading-7 [&:not(:first-child)]:mt-4", className)}
       {...props}
     />
   ),
   ul: ({ className, ...props }) => (
-    <ul className={clsx("my-0 ml-0 list-disc", className)} {...props} />
+    <ul className={clsx("list-inside mt-4 mb-0 ml-0 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }) => (
-    <ol className={clsx("my-0 ml-0 list-decimal", className)} {...props} />
+    <ol className={clsx("list-inside mt-4 mb-0 ml-0 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }) => (
     <li className={clsx("mt-0", className)} {...props} />
@@ -94,7 +94,7 @@ const components = {
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={clsx(
-        "mt-6 border-l-2 border-zinc-300 pl-6 italic text-zinc-800 [&>*]:text-zinc-600",
+        "mt-4 border-l-2 border-zinc-300 pl-6 italic text-zinc-800 [&>*]:text-zinc-600",
         className
       )}
       {...props}

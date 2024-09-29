@@ -7,7 +7,7 @@ export default function Footer() {
       <h3 className="text-center text-lg sm:text-xl font-judul mb-2">
         Want to partner and do B2B with us?
       </h3>
-      <div className="flex gap-2 flex-wrap justify-center mb-4">
+      <div className="flex gap-2 flex-wrap justify-center mb-8">
         <a
           className="rounded-full flex items-center justify-center gap-2 text-xs sm:text-sm py-2 px-5 bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
           href="https://heads.bananow.land/"
@@ -37,6 +37,7 @@ export default function Footer() {
           Fill a Form
         </a>
       </div>
+      <div className="w-full border-b border-dark-now dark:border-light-now mb-2" />
       <div className="flex gap-2 flex-wrap justify-center mb-2 text-xs sm:text-sm">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"

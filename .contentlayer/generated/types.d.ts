@@ -18,6 +18,8 @@ export type Post = {
   description: string
   categories: string[]
   gambar: string
+  penulis: string
+  link?: string | undefined
   /** MDX file body */
   body: MDX
   url: string

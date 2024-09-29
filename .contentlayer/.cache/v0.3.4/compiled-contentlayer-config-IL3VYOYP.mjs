@@ -9,7 +9,9 @@ var Post = defineDocumentType(() => ({
     date: { type: "date", required: true },
     description: { type: "string", required: true },
     categories: { type: "list", of: { type: "string" }, required: true },
-    gambar: { type: "string", required: true }
+    gambar: { type: "string", required: true },
+    penulis: { type: "string", required: true },
+    link: { type: "string", required: false }
   },
   computedFields: {
     url: {
@@ -23,4 +25,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-P6IBIZUK.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-IL3VYOYP.mjs.map

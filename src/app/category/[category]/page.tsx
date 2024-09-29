@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts } from "contentlayer/generated";
+import Header from "@/app/components/header";
+import Footer from "@/app/components/footer";
 
 export const generateStaticParams = async () => {
   const categories = Array.from(
@@ -34,6 +36,7 @@ export default function CategoryPage({
 }) {
   const category =
     params.category.charAt(0).toUpperCase() + params.category.slice(1);
+
   const posts = allPosts
     .filter((post) =>
       post.categories.map((cat) => cat.toLowerCase()).includes(params.category)
@@ -41,102 +44,58 @@ export default function CategoryPage({
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center">
-        <Image
-          className="items-center"
-          src="/images/logos/na-now-news.svg"
-          alt="Na Now News Illustration"
-          width={320}
-          height={240}
-          priority
-        />
-        <h1 className="text-3xl font-bold">Na Now {category}</h1>
-        <div className="mx-auto max-w-2xl py-16">
+    <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">
+      <Header />
+      <main className="mx-auto max-w-3xl flex flex-col items-center gap-8">
+        <h1 className="text-2xl sm:text-3xl text-center font-judul border-b border-dark-now dark:border-light-now mb-2 w-max">
+          <span className="text-green-now dark:text-yellow-now">Na</span>{" "}
+          <span className="text-yellow-now dark:text-green-now">Now</span>{" "}
+          <span className="text-green-now dark:text-yellow-now">{category}</span>
+        </h1>
+        <ul className="border-b border-dark-now dark:border-light-now">
           {posts.map((post) => (
-            <div key={post._id} className="mb-8">
-              <h2 className="mb-1 text-xl">
+            <li key={post._id} className="mb-8">
+              <Link href={post.url}>
+                <Image
+                  src={post.gambar}
+                  alt={post.title}
+                  className="rounded-md mb-4"
+                  width={768}
+                  height={256}
+                  priority
+                />
+              </Link>
+              <h2 className="text-xl sm:text-2xl font-judul">
                 <Link
                   href={post.url}
-                  className="text-blue-700 hover:text-blue-900"
+                  className="text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now"
                 >
                   {post.title}
                 </Link>
               </h2>
               <time
                 dateTime={post.date}
-                className="mb-2 block text-xs text-gray-600"
+                className="block text-sm sm:text-base text-yellow-now dark:text-green-now font-judul"
               >
                 {format(parseISO(post.date), "LLLL d, yyyy")}
               </time>
-              <div className="text-sm">{post.description}</div>
-              <div className="mt-2 flex flex-wrap gap-2">
+              <p className="text-sm sm:text-base">{post.description}</p>
+              <div className="flex flex-wrap gap-2 justify-items-start mt-2 mb-8">
                 {post.categories.map((cat: string) => (
                   <Link
                     key={cat}
                     href={`/category/${cat.toLowerCase()}`}
-                    className="text-sm text-blue-600 hover:underline"
+                    className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
                   >
                     {cat}
                   </Link>
                 ))}
               </div>
-            </div>
+            </li>
           ))}
-          <div className="mt-12">
-            <Link href="/" className="text-blue-700 hover:text-blue-900">
-              ← Back to Home
-            </Link>
-          </div>
-        </div>
+        </ul>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/base/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          On Market
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/basescan/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          On Basescan
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to The Land →
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }

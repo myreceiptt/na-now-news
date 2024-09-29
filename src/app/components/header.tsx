@@ -31,9 +31,9 @@ export default function Header() {
         <span className="text-green-now dark:text-yellow-now">LAND</span>
       </h1>
       <div className="flex flex-wrap gap-2 justify-center">
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <Link
-            key={category}
+            key={index}
             href={`/category/${category.toLowerCase()}`}
             className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
           >
@@ -41,6 +41,7 @@ export default function Header() {
           </Link>
         ))}
       </div>
+      <div className="w-full border-b border-dark-now dark:border-light-now" />
     </header>
   );
 }
