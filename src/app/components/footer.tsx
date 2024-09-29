@@ -24,7 +24,7 @@ export default function Footer() {
         </a>
         <a
           className="rounded-full flex items-center justify-center gap-2 text-xs sm:text-sm py-2 px-5 bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
-          href="https://news.bananow.land/partnerhip"
+          href="/partnership"
           target="_blank"
           rel="noopener noreferrer"
         >
