@@ -10,10 +10,6 @@ export default function Home() {
     compareDesc(new Date(a.date), new Date(b.date))
   );
 
-  const categories = Array.from(
-    new Set(posts.flatMap((post) => post.categories))
-  );
-
   return (
     <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">
       <Header />
