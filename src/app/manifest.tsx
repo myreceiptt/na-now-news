@@ -1,0 +1,47 @@
+import type { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    short_name: "Na Now News",
+    name: "Na Now News of BANANOW.LAND",
+
+    icons: [
+      {
+        src: "/favicon/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        src: "/favicon/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        src: "/favicon/favicon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "/favicon/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "/favicon/favicon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+      {
+        src: "/favicon/android-chrome-512x512",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    start_url: "/",
+    display: "standalone",
+    background_color: "#171717",
+    theme_color: "#171717",
+    description:
+      "Here we share whatever we have done. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!",
+  };
+}
