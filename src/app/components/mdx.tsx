@@ -107,7 +107,7 @@ const components = {
     // eslint-disable-next-line @next/next/no-img-element
     <span>
       <span>
-        <img className={clsx("rounded-md", className)} alt={alt} {...props} />
+        <Image className={clsx("rounded-md", className)} alt={alt} {...props} />
       </span>
     </span>
   ),

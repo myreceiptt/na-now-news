@@ -1,6 +1,5 @@
 import { format, parseISO } from "date-fns";
 import { allPosts } from "contentlayer/generated";
-import { getMDXComponent } from "next-contentlayer/hooks";
 import { Mdx } from "@/app/components/mdx";
 import Link from "next/link";
 import Image from "next/image";
@@ -31,7 +30,9 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           height={240}
           priority
         />
-        <h1 className="text-3xl font-bold font-[family-name:var(--font-judul)]">{post.title}</h1>
+        <h1 className="text-3xl font-bold font-[family-name:var(--font-judul)]">
+          {post.title}
+        </h1>
         <div className="flex gap-2 items-center flex-wrap justify-center">
           {post.categories.map((category: string) => (
             <Link
