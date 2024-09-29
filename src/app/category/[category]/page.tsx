@@ -47,7 +47,7 @@ export default function CategoryPage({
     <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">
       <Header />
       <main className="mx-auto max-w-3xl flex flex-col items-center gap-8">
-        <h1 className="text-2xl sm:text-3xl text-center font-judul border-b border-dark-now dark:border-light-now mb-2 w-max">
+        <h1 className="text-2xl sm:text-3xl text-center font-judul border-b border-dark-now dark:border-light-now w-max">
           <span className="text-green-now dark:text-yellow-now">Na</span>{" "}
           <span className="text-yellow-now dark:text-green-now">Now</span>{" "}
           <span className="text-green-now dark:text-yellow-now">{category}</span>
