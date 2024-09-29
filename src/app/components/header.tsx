@@ -14,13 +14,15 @@ export default function Header() {
 
   return (
     <header className="mx-auto max-w-3xl flex flex-col items-center gap-8">
-      <Image
-        src="/images/logos/na-now-news.svg"
-        alt="Na Now News Illustration"
-        width={320}
-        height={240}
-        priority
-      />
+      <Link href="/" className="text-center">
+        <Image
+          src="/images/logos/na-now-news.svg"
+          alt="Na Now News Illustration"
+          width={320}
+          height={240}
+          priority
+        />
+      </Link>
       <h1 className="text-2xl sm:text-3xl text-center font-judul">
         <span className="text-green-now dark:text-yellow-now">Na</span>{" "}
         <span className="text-yellow-now dark:text-green-now">Now</span>{" "}
