@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,7 +5,8 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import YouTube from "./youtube";
 import CustomLink from "./customlink";
 
-function clsx(...args: any) {
+function clsx(...args: (string | boolean | undefined | null)[]): string {
+  // function clsx(...args: any) {
   return args.filter(Boolean).join(" ");
 }
 
@@ -107,14 +107,7 @@ const components = {
     // eslint-disable-next-line @next/next/no-img-element
     <span>
       <span>
-        <img
-          className={clsx(
-            "rounded-md",
-            className
-          )}
-          alt={alt}
-          {...props}
-        />
+        <img className={clsx("rounded-md", className)} alt={alt} {...props} />
       </span>
     </span>
   ),
