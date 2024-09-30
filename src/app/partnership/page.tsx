@@ -6,7 +6,7 @@ import Footer from "@/app/components/footer";
 function PartnerShip() {
   const [result, setResult] = React.useState("");
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
     const formData = new FormData(event.target);
