@@ -15,7 +15,7 @@ const components = {
   h1: ({ className, ...props }) => (
     <h1
       className={clsx(
-        "mt-2 scroll-m-20 text-4xl font-bold tracking-tight",
+        "[&:not(:first-child)]:mt-4 text-3xl sm:text-4xl font-judul",
         className
       )}
       {...props}
@@ -24,7 +24,7 @@ const components = {
   h2: ({ className, ...props }) => (
     <h2
       className={clsx(
-        "mt-10 scroll-m-20 border-b border-b-zinc-800 pb-1 text-3xl font-semibold tracking-tight first:mt-0",
+        "[&:not(:first-child)]:mt-4 text-2xl sm:text-3xl font-judul",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ const components = {
   h3: ({ className, ...props }) => (
     <h3
       className={clsx(
-        "mt-8 scroll-m-20 text-2xl font-semibold tracking-tight",
+        "[&:not(:first-child)]:mt-4 text-2xl font-judul",
         className
       )}
       {...props}
@@ -42,7 +42,7 @@ const components = {
   h4: ({ className, ...props }) => (
     <h4
       className={clsx(
-        "mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "[&:not(:first-child)]:mt-4 text-lg sm:text-xl font-judul",
         className
       )}
       {...props}
@@ -51,7 +51,7 @@ const components = {
   h5: ({ className, ...props }) => (
     <h5
       className={clsx(
-        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        "[&:not(:first-child)]:mt-4 text-base sm:text-lg font-judul",
         className
       )}
       {...props}
@@ -60,7 +60,7 @@ const components = {
   h6: ({ className, ...props }) => (
     <h6
       className={clsx(
-        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        "[&:not(:first-child)]:mt-4 text-sm sm:text-base font-judul",
         className
       )}
       {...props}
@@ -69,7 +69,7 @@ const components = {
   a: ({ className, ...props }) => (
     <Link
       className={clsx(
-        "font-medium text-zinc-900 underline underline-offset-4",
+        "text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now underline underline-offset-4",
         className
       )}
       {...props}
@@ -78,18 +78,18 @@ const components = {
   a: CustomLink,
   p: ({ className, ...props }) => (
     <p
-      className={clsx("leading-7 [&:not(:first-child)]:mt-4", className)}
+      className={clsx("[&:not(:first-child)]:mt-2 text-sm sm:text-base", className)}
       {...props}
     />
   ),
   ul: ({ className, ...props }) => (
-    <ul className={clsx("list-inside mt-4 mb-0 ml-0 list-disc", className)} {...props} />
+    <ul className={clsx("list-inside [&:not(:first-child)]:mt-2 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }) => (
-    <ol className={clsx("list-inside mt-4 mb-0 ml-0 list-decimal", className)} {...props} />
+    <ol className={clsx("list-inside [&:not(:first-child)]:mt-2 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }) => (
-    <li className={clsx("mt-0", className)} {...props} />
+    <li className={clsx("", className)} {...props} />
   ),
   blockquote: ({ className, ...props }) => (
     <blockquote

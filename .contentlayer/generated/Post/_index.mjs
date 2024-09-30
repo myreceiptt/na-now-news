@@ -2,5 +2,6 @@
 
 import fruitThatConnectsUsMdx from './fruit-that-connects-us.mdx.json' assert { type: 'json' }
 import naNowNewsMdx from './na-now-news.mdx.json' assert { type: 'json' }
+import allEnergyGenerationWillBeSolarMdx from './all-energy-generation-will-be-solar.mdx.json' assert { type: 'json' }
 
-export const allPosts = [fruitThatConnectsUsMdx, naNowNewsMdx]
+export const allPosts = [fruitThatConnectsUsMdx, naNowNewsMdx, allEnergyGenerationWillBeSolarMdx]

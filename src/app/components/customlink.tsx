@@ -14,5 +14,5 @@ export default function CustomLink(
     return <Link href={href}>{props.children}</Link>;
   }
 
-  return <a target="_blank" {...props} />;
+  return <a target="_blank" className="text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now underline underline-offset-4" {...props} />;
 }
