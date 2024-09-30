@@ -9,7 +9,7 @@ function PartnerShip() {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target as HTMLFormElement);
 
     formData.append("access_key", "792b0583-bc3e-4591-9ccf-030ec083f343");
 
@@ -22,7 +22,7 @@ function PartnerShip() {
 
     if (data.success) {
       setResult("Form Submitted Successfully");
-      event.target.reset();
+      (event.target as HTMLFormElement).reset();
     } else {
       console.log("Error", data);
       setResult(data.message);
