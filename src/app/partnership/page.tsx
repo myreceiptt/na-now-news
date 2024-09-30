@@ -1,9 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { compareDesc, format, parseISO } from "date-fns";
-import { allPosts } from "contentlayer/generated";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 
