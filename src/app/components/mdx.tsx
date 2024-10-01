@@ -78,23 +78,38 @@ const components = {
   a: CustomLink,
   p: ({ className, ...props }) => (
     <p
-      className={clsx("[&:not(:first-child)]:mt-2 text-sm sm:text-base", className)}
+      className={clsx(
+        "[&:not(:first-child)]:mt-2 text-sm sm:text-base",
+        className
+      )}
       {...props}
     />
   ),
   ul: ({ className, ...props }) => (
-    <ul className={clsx("list-inside [&:not(:first-child)]:mt-2 list-disc", className)} {...props} />
+    <ul
+      className={clsx(
+        "list-inside [&:not(:first-child)]:mt-2 list-disc",
+        className
+      )}
+      {...props}
+    />
   ),
   ol: ({ className, ...props }) => (
-    <ol className={clsx("list-inside [&:not(:first-child)]:mt-2 list-decimal", className)} {...props} />
+    <ol
+      className={clsx(
+        "list-inside [&:not(:first-child)]:mt-2 list-decimal",
+        className
+      )}
+      {...props}
+    />
   ),
   li: ({ className, ...props }) => (
-    <li className={clsx("", className)} {...props} />
+    <li className={clsx("text-sm sm:text-base", className)} {...props} />
   ),
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={clsx(
-        "mt-4 border-l-2 border-zinc-300 pl-6 italic text-zinc-800 [&>*]:text-zinc-600",
+        "[&:not(:first-child)]:mt-4 [&:not(:last-child)]:mb-4 border-l-4 border-green-now dark:border-yellow-now pl-4 italic text-yellow-now dark:text-green-now",
         className
       )}
       {...props}
@@ -108,11 +123,17 @@ const components = {
     // eslint-disable-next-line @next/next/no-img-element
     <span>
       <span>
-        <img className={clsx("rounded-md", className)} alt={alt} {...props} />
+        <Image
+          priority
+          width={768}
+          height={256}
+          className={clsx("rounded-md", className)}
+          alt={alt}
+          {...props}
+        />
       </span>
     </span>
   ),
-
   hr: ({ ...props }) => (
     <hr className="my-4 border-zinc-200 md:my-8" {...props} />
   ),
@@ -166,7 +187,6 @@ const components = {
       {...props}
     />
   ),
-  Image,
   YouTube,
 };
 
