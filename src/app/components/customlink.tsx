@@ -2,17 +2,11 @@ import Link from "next/link";
 import { HTMLProps } from "react";
 
 export default function CustomLink(
-  props: { href?: string } & HTMLProps<HTMLAnchorElement>
+  props: { href: string } & HTMLProps<HTMLAnchorElement>
 ) {
   // export default function CustomLink(props: { href: string; children: React.ReactNode }) {
 
   const href = props.href;
-
-  if (!href) {
-    console.error("Missing 'href' in CustomLink");
-    return <span>{props.children}</span>;
-  }
-
   const isInternalLink = href && href.startsWith("/");
   const isImageLink = href && href.startsWith("/images");
 
