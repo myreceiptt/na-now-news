@@ -11,13 +11,22 @@ function clsx(...args: (string | boolean | undefined | null)[]): string {
 }
 
 const components = {
-  strong: ({ className, ...props }) => (
-    <strong className={clsx("text-green-now dark:text-yellow-now", className)} {...props} />
+  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <strong
+      className={clsx("text-green-now dark:text-yellow-now", className)}
+      {...props}
+    />
   ),
-  em: ({ className, ...props }) => (
-    <em className={clsx("not-italic font-bold text-yellow-now dark:text-green-now", className)} {...props} />
+  em: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <em
+      className={clsx(
+        "not-italic font-bold text-yellow-now dark:text-green-now",
+        className
+      )}
+      {...props}
+    />
   ),
-  h1: ({ className, ...props }) => (
+  h1: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h1
       className={clsx(
         "[&:not(:first-child)]:mt-4 text-3xl sm:text-4xl font-judul",
@@ -26,7 +35,7 @@ const components = {
       {...props}
     />
   ),
-  h2: ({ className, ...props }) => (
+  h2: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h2
       className={clsx(
         "[&:not(:first-child)]:mt-4 text-2xl sm:text-3xl font-judul",
@@ -35,7 +44,7 @@ const components = {
       {...props}
     />
   ),
-  h3: ({ className, ...props }) => (
+  h3: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h3
       className={clsx(
         "[&:not(:first-child)]:mt-4 text-2xl font-judul",
@@ -44,7 +53,7 @@ const components = {
       {...props}
     />
   ),
-  h4: ({ className, ...props }) => (
+  h4: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h4
       className={clsx(
         "[&:not(:first-child)]:mt-4 text-lg sm:text-xl font-judul",
@@ -53,7 +62,7 @@ const components = {
       {...props}
     />
   ),
-  h5: ({ className, ...props }) => (
+  h5: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h5
       className={clsx(
         "[&:not(:first-child)]:mt-4 text-base sm:text-lg font-judul",
@@ -62,7 +71,7 @@ const components = {
       {...props}
     />
   ),
-  h6: ({ className, ...props }) => (
+  h6: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <h6
       className={clsx(
         "[&:not(:first-child)]:mt-4 text-sm sm:text-base font-judul",
@@ -71,7 +80,7 @@ const components = {
       {...props}
     />
   ),
-  a: ({ className, ...props }) => (
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <Link
       className={clsx(
         "text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now underline underline-offset-4",
@@ -81,7 +90,7 @@ const components = {
     />
   ),
   a: CustomLink,
-  p: ({ className, ...props }) => (
+  p: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <p
       className={clsx(
         "[&:not(:first-child)]:mt-2 text-sm sm:text-base",
@@ -90,7 +99,7 @@ const components = {
       {...props}
     />
   ),
-  ul: ({ className, ...props }) => (
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <ul
       className={clsx(
         "list-inside [&:not(:first-child)]:mt-2 list-disc",
@@ -99,7 +108,7 @@ const components = {
       {...props}
     />
   ),
-  ol: ({ className, ...props }) => (
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <ol
       className={clsx(
         "list-inside [&:not(:first-child)]:mt-2 list-decimal",
@@ -108,10 +117,10 @@ const components = {
       {...props}
     />
   ),
-  li: ({ className, ...props }) => (
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li className={clsx("text-sm sm:text-base", className)} {...props} />
   ),
-  blockquote: ({ className, ...props }) => (
+  blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
       className={clsx(
         "[&:not(:first-child)]:mt-4 [&:not(:last-child)]:mb-4 py-4 bg-yellow-now dark:bg-green-now rounded-md border-l-4 border-green-now dark:border-yellow-now pl-4 italic text-dark-now dark:text-light-now",
@@ -125,14 +134,16 @@ const components = {
     alt,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <span>
       <span>
         <Image
           priority
           width={768}
           height={256}
-          className={clsx("rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300", className)}
+          className={clsx(
+            "rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300",
+            className
+          )}
           alt={alt}
           {...props}
         />
