@@ -148,18 +148,20 @@ const components = {
   img: ({
     className,
     alt,
+    width = 768, // Default value for width
+    height = 256, // Default value for height
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     <span>
       <span>
         <Image
           priority
-          width={768}
-          height={256}
           className={clsx(
             "rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300",
             className
           )}
+          width={768}
+          height={256}
           alt={alt}
           {...props}
         />
