@@ -142,13 +142,17 @@ const components = {
     height = 256, // Default value for height
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    const safeWidth =
+      typeof width === "number" ? width : parseInt(width as string, 10);
+    const safeHeight =
+      typeof height === "number" ? height : parseInt(height as string, 10);
     return (
       <span>
         <span>
           <Image
             priority
-            width={width}
-            height={height}
+            width={safeWidth}
+            height={safeHeight}
             className={clsx(
               "rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300",
               className
