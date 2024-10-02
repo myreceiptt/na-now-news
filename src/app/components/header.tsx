@@ -18,6 +18,7 @@ export default function Header() {
         <Image
           src="/images/logos/na-now-news.svg"
           alt="Na Now News Illustration"
+          className="hover:scale-105 transition-all ease duration-300"
           width={320}
           height={240}
           priority

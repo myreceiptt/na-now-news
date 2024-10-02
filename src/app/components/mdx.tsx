@@ -12,6 +12,12 @@ function clsx(...args: (string | boolean | undefined | null)[]): string {
 }
 
 const components = {
+  strong: ({ className, ...props }) => (
+    <strong className={clsx("text-green-now dark:text-yellow-now", className)} {...props} />
+  ),
+  em: ({ className, ...props }) => (
+    <em className={clsx("not-italic font-bold text-yellow-now dark:text-green-now", className)} {...props} />
+  ),
   h1: ({ className, ...props }) => (
     <h1
       className={clsx(
@@ -109,7 +115,7 @@ const components = {
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={clsx(
-        "[&:not(:first-child)]:mt-4 [&:not(:last-child)]:mb-4 border-l-4 border-green-now dark:border-yellow-now pl-4 italic text-yellow-now dark:text-green-now",
+        "[&:not(:first-child)]:mt-4 [&:not(:last-child)]:mb-4 py-4 bg-yellow-now dark:bg-green-now rounded-md border-l-4 border-green-now dark:border-yellow-now pl-4 italic text-dark-now dark:text-light-now",
         className
       )}
       {...props}
@@ -127,7 +133,7 @@ const components = {
           priority
           width={768}
           height={256}
-          className={clsx("rounded-md", className)}
+          className={clsx("rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300", className)}
           alt={alt}
           {...props}
         />
@@ -135,55 +141,8 @@ const components = {
     </span>
   ),
   hr: ({ ...props }) => (
-    <hr className="my-4 border-zinc-200 md:my-8" {...props} />
-  ),
-  table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="w-full my-6 overflow-y-auto">
-      <table className={clsx("w-full", className)} {...props} />
-    </div>
-  ),
-  tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr
-      className={clsx(
-        "m-0 border-t border-zinc-300 p-0 even:bg-zinc-100",
-        className
-      )}
-      {...props}
-    />
-  ),
-  th: ({ className, ...props }) => (
-    <th
-      className={clsx(
-        "border border-zinc-200 px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
-  ),
-  td: ({ className, ...props }) => (
-    <td
-      className={clsx(
-        "border border-zinc-200 px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
-  ),
-  pre: ({ className, ...props }) => (
-    <pre
-      className={clsx(
-        "mt-6 mb-4 overflow-x-auto rounded-lg bg-zinc-900 py-4",
-        className
-      )}
-      {...props}
-    />
-  ),
-  code: ({ className, ...props }) => (
-    <code
-      className={clsx(
-        "relative rounded border bg-zinc-300 bg-opacity-25 py-[0.2rem] px-[0.3rem] font-mono text-sm text-zinc-600",
-        className
-      )}
+    <hr
+      className="[&:not(:first-child)]:mt-4 border-dark-now dark:border-light-now"
       {...props}
     />
   ),

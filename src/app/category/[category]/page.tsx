@@ -59,7 +59,7 @@ export default function CategoryPage({
                 <Image
                   src={post.gambar}
                   alt={post.title}
-                  className="rounded-md mb-4"
+                  className="rounded-md mb-4 aspect-[3/1] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300"
                   width={768}
                   height={256}
                   priority

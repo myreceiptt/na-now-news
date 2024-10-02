@@ -29,7 +29,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           <Image
             src={post.gambar}
             alt={post.title}
-            className="rounded-md mb-4"
+            className="rounded-md mb-4 aspect-[3/1] w-full h-full object-cover object-center"
             width={768}
             height={256}
             priority
@@ -48,6 +48,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
             Author:{" "}
             <Link
               href={`${post.link}`}
+              target="_blank"
               className="text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now"
             >
               {post.penulis}
