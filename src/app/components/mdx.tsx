@@ -79,15 +79,6 @@ const components = {
       {...props}
     />
   ),
-  // a: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-  //   <Link
-  //     className={clsx(
-  //       "text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now underline underline-offset-4",
-  //       className
-  //     )}
-  //     {...props}
-  //   />
-  // ),
   a: ({
     href,
     children,
@@ -147,27 +138,27 @@ const components = {
   ),
   img: ({
     className,
-    alt,
     width = 768, // Default value for width
     height = 256, // Default value for height
     ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <span>
+  }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    return (
       <span>
-        <Image
-          priority
-          className={clsx(
-            "rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300",
-            className
-          )}
-          width={768}
-          height={256}
-          alt={alt}
-          {...props}
-        />
+        <span>
+          <Image
+            priority
+            width={width}
+            height={height}
+            className={clsx(
+              "rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300",
+              className
+            )}
+            {...props}
+          />
+        </span>
       </span>
-    </span>
-  ),
+    );
+  },
   hr: ({ ...props }) => (
     <hr
       className="[&:not(:first-child)]:mt-4 border-dark-now dark:border-light-now"
