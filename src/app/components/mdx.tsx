@@ -80,16 +80,33 @@ const components = {
       {...props}
     />
   ),
-  a: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <Link
-      className={clsx(
-        "text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now underline underline-offset-4",
-        className
-      )}
-      {...props}
-    />
-  ),
-  a: CustomLink,
+  // a: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+  //   <Link
+  //     className={clsx(
+  //       "text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now underline underline-offset-4",
+  //       className
+  //     )}
+  //     {...props}
+  //   />
+  // ),
+  a: ({
+    href,
+    children,
+    className,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    if (!href) {
+      // Handle the case where href is missing (you can log an error or use a default)
+      console.error("Missing href in anchor tag");
+      return <span className={className}>{children}</span>; // Fallback behavior (you can choose how to handle it)
+    }
+
+    return (
+      <CustomLink href={href} className={className} {...props}>
+        {children}
+      </CustomLink>
+    );
+  },
   p: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <p
       className={clsx(
