@@ -1,6 +1,5 @@
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import YouTube from "./youtube";
 import CustomLink from "./customlink";
