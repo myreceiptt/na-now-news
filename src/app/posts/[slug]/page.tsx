@@ -12,14 +12,120 @@ export const generateStaticParams = async () =>
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-  return { title: post.title, description: post.description };
+  return {
+    metadataBase: new URL("https://news.bananow.land/"),
+    title: {
+      template: "%s | Na Now News of BANANOW.LAND", // Included on each child page
+      default: post.title, // Title on each page
+    },
+    description: post.description, // Description for each page
+    applicationName: "Na Now News of BANANOW.LAND",
+    authors: [
+      { name: post.penulis, url: post.link },
+      // { name: "Prof. NOTA", url: "https://nota.straight-line.org" },
+    ],
+    manifest: "/manifest.webmanifest",
+    generator: "BANANOW.LAND",
+    keywords: [
+      "Web3 News",
+      "BANANOW LAND NFTs",
+      "NFTs Project",
+      "Web3 Development",
+      "Base Blockchain",
+      "Decentralized Organization",
+      "Fungible Token",
+      "Non-Fungible Token",
+      "NFT",
+      "Decentralized Finance",
+      "DAO",
+      "Web3 Community",
+      "NFT Community",
+      "Web3 Education",
+      "Blockchain Education",
+      "Web3 Business",
+      "Blockchain Business",
+      "Web3 Gaming",
+      "Blockchain Gaming",
+      "Web3 Markets",
+      "Blockchain Markets",
+    ],
+    referrer: "origin-when-cross-origin",
+    creator: "BANANOW.LAND",
+    publisher: "BANANOW.LAND",
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    alternates: {
+      canonical: "/posts/" + `${params.slug}`, // Canonical for each page
+      // languages: {
+      //   // Only used when billingual page provided
+      //   "en-US": "/en-US",
+      //   "id-ID": "/id-ID",
+      // },
+    },
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      title: post.title, // Title on each page
+      description: post.description, // Description for each page
+      url: "https://news.bananow.land/posts/" + `${params.slug}`, // URL for each page
+      siteName: "Na Now News of BANANOW.LAND",
+      locale: "en-US",
+      images: [
+        {
+          url: "https://news.bananow.land" + post.gambar, // Must be an absolute URL
+          width: 1920,
+          height: 1080,
+          alt: post.title, // Alternate text for image
+        },
+        {
+          url: "https://news.bananow.land" + post.gambar, // Must be an absolute URL
+          width: 1800,
+          height: 1600,
+          alt: post.title, // Alternate text for image
+        },
+      ],
+      type: "article", // Can be an "website" for the "type"
+      publishedTime: post.date, // Only use this for "article"
+      authors: [post.penulis], // Only use this for "article"
+    },
+    twitter: {
+      card: "summary_large_image",
+      siteId: "@bananow_land",
+      creator: "@bananow_land",
+      creatorId: "@bananow_land",
+      title: post.title, // Title on each page
+      description: post.description, // Description for each page
+      images: ["https://news.bananow.land" + post.gambar], // Must be an absolute URL
+    },
+    icons: {
+      shortcut: "/favicon/favicon.ico",
+      icon: "/favicon/favicon-32x32.png",
+      apple: "/favicon/apple-touch-icon.png",
+      other: {
+        rel: "apple-touch-icon-precomposed",
+        url: "/favicon/apple-touch-icon.png",
+      },
+    },
+  };
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-
-  // const Content = getMDXComponent(post.body.code);
 
   return (
     <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">

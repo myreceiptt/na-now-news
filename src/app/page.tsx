@@ -5,7 +5,7 @@ import { allPosts } from "contentlayer/generated";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 
-export default function Home() {
+export default function HomePage() {
   const posts = allPosts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );

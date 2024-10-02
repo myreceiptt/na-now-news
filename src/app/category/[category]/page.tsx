@@ -24,8 +24,140 @@ export const generateMetadata = ({
   const category =
     params.category.charAt(0).toUpperCase() + params.category.slice(1);
   return {
-    title: `${category} - Na Now News of BANANOW.LAND`,
-    description: `Here we share Na Now News about ${category}. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!`,
+    metadataBase: new URL("https://news.bananow.land/"),
+    title: {
+      template: "%s | Na Now News of BANANOW.LAND", // Included on each child page
+      default: "Na Now " + `${category}`, // Title on each page
+    },
+    description:
+      "Here we share Na Now News about " +
+      `${category}` +
+      ". It can be crazy " +
+      `${category}` +
+      " or ordinary " +
+      `${category}` +
+      ". There are a lot of " +
+      `${category}` +
+      ". Let's dig in!", // Description for each page
+    applicationName: "Na Now News of BANANOW.LAND",
+    authors: [
+      { name: "BANANOW.LAND", url: "https://www.bananow.land" },
+      { name: "Prof. NOTA", url: "https://nota.straight-line.org" },
+    ],
+    manifest: "/manifest.webmanifest",
+    generator: "BANANOW.LAND",
+    keywords: [
+      "Web3 News",
+      "BANANOW LAND NFTs",
+      "NFTs Project",
+      "Web3 Development",
+      "Base Blockchain",
+      "Decentralized Organization",
+      "Fungible Token",
+      "Non-Fungible Token",
+      "NFT",
+      "Decentralized Finance",
+      "DAO",
+      "Web3 Community",
+      "NFT Community",
+      "Web3 Education",
+      "Blockchain Education",
+      "Web3 Business",
+      "Blockchain Business",
+      "Web3 Gaming",
+      "Blockchain Gaming",
+      "Web3 Markets",
+      "Blockchain Markets",
+    ],
+    referrer: "origin-when-cross-origin",
+    creator: "BANANOW.LAND",
+    publisher: "BANANOW.LAND",
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    alternates: {
+      canonical: "/category/" + `${category}`, // Canonical for each page
+      // languages: {
+      //   // Only used when billingual page provided
+      //   "en-US": "/en-US",
+      //   "id-ID": "/id-ID",
+      // },
+    },
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      title: "Na Now " + `${category}`, // Title on each page
+      description:
+        "Here we share Na Now News about " +
+        `${category}` +
+        ". It can be crazy " +
+        `${category}` +
+        " or ordinary " +
+        `${category}` +
+        ". There are a lot of " +
+        `${category}` +
+        ". Let's dig in!", // Description for each page
+      url: "https://news.bananow.land/category/" + `${category}`, // URL for each page
+      siteName: "Na Now News of BANANOW.LAND",
+      locale: "en-US",
+      images: [
+        {
+          url: "https://news.bananow.land/images/logos/na-now-news.svg", // Must be an absolute URL
+          width: 1920,
+          height: 1080,
+          alt: "Na Now News Illustration", // Alternate text for image
+        },
+        {
+          url: "https://news.bananow.land/images/logos/na-now-news.svg", // Must be an absolute URL
+          width: 1800,
+          height: 1600,
+          alt: "Na Now News Illustration", // Alternate text for image
+        },
+      ],
+      type: "website", // Can be an "article" for the "type"
+      // publishedTime: '2024-02-29T00:00:00.000Z', // Only use this for "article"
+      // authors: ['Seb', 'Josh'], // Only use this for "article"
+    },
+    twitter: {
+      card: "summary_large_image",
+      siteId: "@bananow_land",
+      creator: "@bananow_land",
+      creatorId: "@bananow_land",
+      title: "Na Now " + `${category}`, // Title on each page
+      description:
+        "Hi, X People! Here we share Na Now News about " +
+        `${category}` +
+        ". It can be crazy " +
+        `${category}` +
+        " or ordinary " +
+        `${category}` +
+        ". There are a lot of " +
+        `${category}` +
+        ". Let's dig in!", // Description for each page
+      images: ["https://news.bananow.land/images/logos/na-now-news.svg"], // Must be an absolute URL
+    },
+    icons: {
+      shortcut: "/favicon/favicon.ico",
+      icon: "/favicon/favicon-32x32.png",
+      apple: "/favicon/apple-touch-icon.png",
+      other: {
+        rel: "apple-touch-icon-precomposed",
+        url: "/favicon/apple-touch-icon.png",
+      },
+    },
   };
 };
 
@@ -50,7 +182,9 @@ export default function CategoryPage({
         <h1 className="text-2xl sm:text-3xl text-center font-judul border-b border-dark-now dark:border-light-now w-max">
           <span className="text-green-now dark:text-yellow-now">Na</span>{" "}
           <span className="text-yellow-now dark:text-green-now">Now</span>{" "}
-          <span className="text-green-now dark:text-yellow-now">{category}</span>
+          <span className="text-green-now dark:text-yellow-now">
+            {category}
+          </span>
         </h1>
         <ul className="border-b border-dark-now dark:border-light-now">
           {posts.map((post) => (
