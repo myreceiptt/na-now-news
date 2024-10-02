@@ -136,10 +136,39 @@ const components = {
       {...props}
     />
   ),
+  // img: ({
+  //   className,
+  //   width = 768, // Default value for width
+  //   height = 256, // Default value for height
+  //   ...props
+  // }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+  //   const safeWidth =
+  //     typeof width === "number" ? width : parseInt(width as string, 10);
+  //   const safeHeight =
+  //     typeof height === "number" ? height : parseInt(height as string, 10);
+  //   return (
+  //     <span>
+  //       <span>
+  //         <Image
+  //           priority
+  //           width={safeWidth}
+  //           height={safeHeight}
+  //           className={clsx(
+  //             "rounded-md aspect-[4/3] w-full h-full object-cover object-center hover:scale-105 transition-all ease duration-300",
+  //             className
+  //           )}
+  //           {...props}
+  //         />
+  //       </span>
+  //     </span>
+  //   );
+  // },
   img: ({
     className,
     width = 768, // Default value for width
     height = 256, // Default value for height
+    src = "/fallback-image.jpg", // Fallback src in case it's undefined
+    alt = "/fallback-image.jpg", // Fallback src in case it's undefined
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => {
     const safeWidth =
@@ -151,6 +180,8 @@ const components = {
         <span>
           <Image
             priority
+            src={src}
+            alt={alt}
             width={safeWidth}
             height={safeHeight}
             className={clsx(
