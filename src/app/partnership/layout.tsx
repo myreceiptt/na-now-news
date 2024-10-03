@@ -121,7 +121,7 @@ export default function PartnerShipLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">
+    <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">
       <Header />
       {children}
       <Footer />

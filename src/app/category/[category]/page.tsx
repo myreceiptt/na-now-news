@@ -176,7 +176,7 @@ export default function CategoryPage({
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
-    <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">
+    <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">
       <Header />
       <main className="mx-auto max-w-3xl flex flex-col items-center gap-8">
         <h1 className="text-2xl sm:text-3xl text-center font-judul border-b border-dark-now dark:border-light-now w-max">

@@ -19,47 +19,49 @@ function PartnerShip() {
     const data = await response.json();
 
     if (data.success) {
-      setResult("Form Submitted Successfully");
+      setResult("Form submitted successfully.");
       (event.target as HTMLFormElement).reset();
     } else {
-      console.log("Error", data);
+      console.log("Error...", data);
       setResult(data.message);
     }
   };
 
   return (
-    <div className="mx-auto max-w-3xl flex flex-col items-center gap-8 border-b border-dark-now dark:border-light-now">
-      <form onSubmit={onSubmit}>
-        <div className="space-y-12">
-          <div className="border-b border-dark-now dark:border-light-now pb-12">
-            <h2 className="text-xl sm:text-2xl font-judul">
-              Partnership Form for Holder of BANANOW BASED NFTs
+    <div className="mx-auto max-w-3xl flex flex-col items-center gap-8">
+      <form
+        onSubmit={onSubmit}
+        className="border-b border-dark-now dark:border-light-now"
+      >
+        <div className="">
+          <div className="border-b border-dark-now dark:border-light-now pb-4">
+            <h2 className="text-xl sm:text-2xl font-judul text-green-now dark:text-yellow-now">
+              Partnership Request Form
             </h2>
-            <p className="mt-1 text-sm leading-6">
+            <h3 className="block text-sm sm:text-base text-yellow-now dark:text-green-now font-judul border-b border-dark-now dark:border-light-now">
               Your information will be shared between Farmers and Heads of
               BANANOW.LAND so be careful what you share.
-            </p>
-
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-full">
+            </h3>
+            <div className="grid grid-cols-1 gap-x-4 gap-y-4">
+              <div className="mt-4 col-span-full">
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Subject *
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-                      I want to partner with and do B2B for a
+                  <div className="flex rounded-md ring-1 ring-dark-now dark:ring-light-now">
+                    <span className="flex select-none items-center pl-2 text-sm sm:text-base">
+                      Be partner for a
                     </span>
                     <input
                       id="subject"
                       name="subject"
                       type="text"
-                      placeholder="profitable project."
+                      placeholder="valuable..."
                       autoComplete="subject"
-                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      className="bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base block flex-1"
                       required
                     />
                   </div>
@@ -69,7 +71,7 @@ function PartnerShip() {
               <div className="col-span-full">
                 <label
                   htmlFor="about"
-                  className="block text-sm font-medium leading-6"
+                  className="block text-sm sm:text-base font-judul"
                 >
                   Tell us about your organization/company/project *
                 </label>
@@ -78,7 +80,8 @@ function PartnerShip() {
                     id="about"
                     name="about"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    placeholder="We are..."
+                    className="block w-full bg-transparent rounded-md py-2 pl-2 ring-1 ring-dark-now dark:ring-light-now placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     defaultValue={""}
                     required
                   />
@@ -87,17 +90,17 @@ function PartnerShip() {
               <div className="col-span-full">
                 <label
                   htmlFor="partnership"
-                  className="block text-sm font-medium leading-6"
+                  className="block text-sm sm:text-base font-judul"
                 >
-                  Also please write a few sentences about your partnership
-                  request. *
+                  Write a few sentences about your partnership request. *
                 </label>
                 <div className="mt-2">
                   <textarea
                     id="partnership"
                     name="partnership"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    placeholder="We want..."
+                    className="block w-full bg-transparent rounded-md py-2 pl-2 ring-1 ring-dark-now dark:ring-light-now placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     defaultValue={""}
                     required
                   />
@@ -106,17 +109,17 @@ function PartnerShip() {
               <div className="col-span-full">
                 <label
                   htmlFor="campaign"
-                  className="block text-sm font-medium leading-6"
+                  className="block text-sm sm:text-base font-judul"
                 >
-                  Now please descript in detail your campaign timeline, goals,
-                  and needs. *
+                  Descript your campaign timeline, goals, and needs. *
                 </label>
                 <div className="mt-2">
                   <textarea
                     id="campaign"
                     name="campaign"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    placeholder="Our campaign..."
+                    className="block w-full bg-transparent rounded-md py-2 pl-2 ring-1 ring-dark-now dark:ring-light-now placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     defaultValue={""}
                     required
                   />
@@ -125,15 +128,14 @@ function PartnerShip() {
             </div>
           </div>
 
-          <div className="border-b border-dark-now dark:border-light-now pb-12">
-            <h2 className="text-base font-semibold leading-7">
+          <div className="border-b border-dark-now dark:border-light-now pb-4">
+            <h2 className="text-xl sm:text-2xl font-judul text-green-now dark:text-yellow-now">
               Your Information
             </h2>
             <p className="mt-1 text-sm leading-6">
               Use a permanent address in Universe of Reality where you can
               receive mail physically.
             </p>
-
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
@@ -169,7 +171,6 @@ function PartnerShip() {
                   />
                 </div>
               </div>
-
               <div className="sm:col-span-full">
                 <label
                   htmlFor="email-address"
@@ -188,7 +189,6 @@ function PartnerShip() {
                   />
                 </div>
               </div>
-
               <div className="col-span-full">
                 <label
                   htmlFor="street-address"
@@ -206,7 +206,6 @@ function PartnerShip() {
                   />
                 </div>
               </div>
-
               <div className="sm:col-span-2 sm:col-start-1">
                 <label
                   htmlFor="city"
@@ -261,7 +260,6 @@ function PartnerShip() {
                   />
                 </div>
               </div>
-
               <div className="sm:col-span-full">
                 <label
                   htmlFor="country"
@@ -285,7 +283,7 @@ function PartnerShip() {
             </div>
           </div>
 
-          <div className="border-b border-dark-now dark:border-light-now pb-12">
+          <div className="border-b border-dark-now dark:border-light-now pb-4">
             <h2 className="text-base font-semibold leading-7">
               Organization / Company / Project Information
             </h2>
@@ -294,7 +292,6 @@ function PartnerShip() {
               provide the information truthfully so we can consider it as best
               as possible.
             </p>
-
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="col-span-full">
                 <label
@@ -398,7 +395,6 @@ function PartnerShip() {
                 </div>
               </div>
             </div>
-
             <div className="mt-10 space-y-10">
               <fieldset>
                 <legend className="text-sm font-semibold leading-6">
@@ -643,13 +639,11 @@ function PartnerShip() {
                         id="fintech"
                         name="fintech"
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        className="h-4 w-4 rounded border-dark-now dark:border-light-now text-yellow-now dark:text-green-now focus:ring-green-now dark:focus:ring-yellow-now"
                       />
                     </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="fintech" className="font-medium">
-                        Fintech
-                      </label>
+                    <div className="text-sm sm:text-base">
+                      <label htmlFor="fintech">Fintech</label>
                     </div>
                   </div>
                 </div>
@@ -658,19 +652,22 @@ function PartnerShip() {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-end gap-x-6">
-          <button type="button" className="text-sm font-semibold leading-6">
+        <div className="mt-4 flex items-center justify-end gap-2 mb-8">
+          <h5 className="text-sm sm:text-base">{result}</h5>
+          <button
+            type="button"
+            className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
+          >
             Cancel
           </button>
           <button
             type="submit"
-            className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
           >
             Send Request
           </button>
         </div>
       </form>
-      <span>{result}</span>
     </div>
   );
 }

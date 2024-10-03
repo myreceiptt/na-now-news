@@ -128,7 +128,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
 
   return (
-    <div className="flex flex-col gap-8 p-8 pb-20 sm:p-20">
+    <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">
       <Header />
       <main className="mx-auto max-w-3xl flex flex-col items-center gap-8">
         <article className="border-b border-dark-now dark:border-light-now">
@@ -160,7 +160,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
               {post.penulis}
             </Link>
           </h4>
-          <h5 className="text-sm sm:text-base mt-1">
+          <h5 className="text-sm sm:text-base">
             Published under these categories:
           </h5>
           <div className="flex flex-wrap gap-2 justify-items-start mt-2 mb-8">
