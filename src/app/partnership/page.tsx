@@ -29,11 +29,8 @@ function PartnerShip() {
 
   return (
     <div className="mx-auto max-w-3xl flex flex-col items-center gap-8">
-      <form
-        onSubmit={onSubmit}
-        className="border-b border-dark-now dark:border-light-now"
-      >
-        <div className="">
+      <form onSubmit={onSubmit}>
+        <div className="flex flex-col items-center gap-8">
           <div className="border-b border-dark-now dark:border-light-now pb-4">
             <h2 className="text-xl sm:text-2xl font-judul text-green-now dark:text-yellow-now">
               Partnership Request Form
@@ -67,7 +64,6 @@ function PartnerShip() {
                   </div>
                 </div>
               </div>
-
               <div className="col-span-full">
                 <label
                   htmlFor="about"
@@ -132,15 +128,15 @@ function PartnerShip() {
             <h2 className="text-xl sm:text-2xl font-judul text-green-now dark:text-yellow-now">
               Your Information
             </h2>
-            <p className="mt-1 text-sm leading-6">
+            <h3 className="block text-sm sm:text-base text-yellow-now dark:text-green-now font-judul border-b border-dark-now dark:border-light-now">
               Use a permanent address in Universe of Reality where you can
               receive mail physically.
-            </p>
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
+            </h3>
+            <div className="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
+              <div className="mt-4 col-span-full sm:col-span-3">
                 <label
                   htmlFor="first-name"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   First name
                 </label>
@@ -150,14 +146,14 @@ function PartnerShip() {
                     name="first-name"
                     type="text"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                   />
                 </div>
               </div>
-              <div className="sm:col-span-3">
+              <div className="sm:mt-4 col-span-full sm:col-span-3">
                 <label
                   htmlFor="last-name"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Last name
                 </label>
@@ -167,14 +163,14 @@ function PartnerShip() {
                     name="last-name"
                     type="text"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                   />
                 </div>
               </div>
-              <div className="sm:col-span-full">
+              <div className="col-span-full">
                 <label
                   htmlFor="email-address"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Email address *
                 </label>
@@ -184,7 +180,7 @@ function PartnerShip() {
                     name="email-address"
                     type="email-address"
                     autoComplete="email-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   />
                 </div>
@@ -192,7 +188,7 @@ function PartnerShip() {
               <div className="col-span-full">
                 <label
                   htmlFor="street-address"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Street address
                 </label>
@@ -202,14 +198,14 @@ function PartnerShip() {
                     name="street-address"
                     type="text"
                     autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                   />
                 </div>
               </div>
-              <div className="sm:col-span-2 sm:col-start-1">
+              <div className="col-span-full sm:col-span-2 sm:col-start-1">
                 <label
                   htmlFor="city"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   City *
                 </label>
@@ -219,17 +215,17 @@ function PartnerShip() {
                     name="city"
                     type="text"
                     autoComplete="city"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
-              <div className="sm:col-span-2">
+              <div className="col-span-full sm:col-span-2">
                 <label
                   htmlFor="province"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
-                  State / Province *
+                  Province *
                 </label>
                 <div className="mt-2">
                   <input
@@ -237,17 +233,17 @@ function PartnerShip() {
                     name="province"
                     type="text"
                     autoComplete="province"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
-              <div className="sm:col-span-2">
+              <div className="col-span-full sm:col-span-2">
                 <label
                   htmlFor="postal-code"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
-                  ZIP / Postal code *
+                  Postal code *
                 </label>
                 <div className="mt-2">
                   <input
@@ -255,15 +251,15 @@ function PartnerShip() {
                     name="postal-code"
                     type="text"
                     autoComplete="postal-code"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
-              <div className="sm:col-span-full">
+              <div className="col-span-full">
                 <label
                   htmlFor="country"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Country
                 </label>
@@ -272,7 +268,7 @@ function PartnerShip() {
                     id="country"
                     name="country"
                     autoComplete="country"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                   >
                     <option>ENDHONESA</option>
                     <option>INDONESIA</option>
@@ -284,19 +280,19 @@ function PartnerShip() {
           </div>
 
           <div className="border-b border-dark-now dark:border-light-now pb-4">
-            <h2 className="text-base font-semibold leading-7">
+            <h2 className="text-xl sm:text-2xl font-judul text-green-now dark:text-yellow-now">
               Organization / Company / Project Information
             </h2>
-            <p className="mt-1 text-sm leading-6">
+            <h3 className="block text-sm sm:text-base text-yellow-now dark:text-green-now font-judul border-b border-dark-now dark:border-light-now">
               We will always be selective when establishing partnerships. Please
               provide the information truthfully so we can consider it as best
               as possible.
-            </p>
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="col-span-full">
+            </h3>
+            <div className="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
+              <div className="mt-4 col-span-full">
                 <label
                   htmlFor="organization-name"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Organization / Company / Project name *
                 </label>
@@ -306,16 +302,15 @@ function PartnerShip() {
                     name="organization-name"
                     type="text"
                     autoComplete="organization-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
-
-              <div className="sm:col-span-3">
+              <div className="col-span-full sm:col-span-3">
                 <label
                   htmlFor="website-address"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Website address *
                 </label>
@@ -325,15 +320,15 @@ function PartnerShip() {
                     name="website-address"
                     type="text"
                     autoComplete="website-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
-              <div className="sm:col-span-3">
+              <div className="col-span-full sm:col-span-3">
                 <label
                   htmlFor="social-network"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Social network *
                 </label>
@@ -343,15 +338,15 @@ function PartnerShip() {
                     name="social-network"
                     type="text"
                     autoComplete="social-network"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
-              <div className="sm:col-span-3">
+              <div className="col-span-full sm:col-span-3">
                 <label
-                  htmlFor="country"
-                  className="block text-sm font-medium leading-6"
+                  htmlFor="partnership-interest"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Partnership Interest *
                 </label>
@@ -360,7 +355,7 @@ function PartnerShip() {
                     id="partnership-interest"
                     name="partnership-interest"
                     autoComplete="partnership-interest"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   >
                     <option>IRL Events</option>
@@ -369,10 +364,10 @@ function PartnerShip() {
                   </select>
                 </div>
               </div>
-              <div className="sm:col-span-3">
+              <div className="col-span-full sm:col-span-3">
                 <label
                   htmlFor="marketing-budget"
-                  className="block text-sm font-medium leading-6"
+                  className="text-sm sm:text-base font-judul"
                 >
                   Marketing budget *
                 </label>
@@ -381,7 +376,7 @@ function PartnerShip() {
                     id="marketing-budget"
                     name="marketing-budget"
                     autoComplete="marketing-budget"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
                     required
                   >
                     <option>$1,000 - $2,500</option>
@@ -394,278 +389,73 @@ function PartnerShip() {
                   </select>
                 </div>
               </div>
-            </div>
-            <div className="mt-10 space-y-10">
-              <fieldset>
-                <legend className="text-sm font-semibold leading-6">
+              <div className="col-span-full">
+                <label
+                  htmlFor="best-describes"
+                  className="text-sm sm:text-base font-judul"
+                >
                   Which category best describes your company / organization /
-                  project? (please select no more than three)
-                </legend>
-                <div className="mt-6 space-y-6">
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="events"
-                        name="events"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="events" className="font-medium">
-                        Events
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="marketing-advertising"
-                        name="marketing-advertising"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="marketing-advertising"
-                        className="font-medium"
-                      >
-                        Marketing/Advertising
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="media"
-                        name="media"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="media" className="font-medium">
-                        Media
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="non-profit"
-                        name="non-profit"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="non-profit" className="font-medium">
-                        Non Profit
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="community-culture"
-                        name="community-culture"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="community-culture"
-                        className="font-medium"
-                      >
-                        Community Culture
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="social"
-                        name="social"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="social" className="font-medium">
-                        Social
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="music"
-                        name="music"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="music" className="font-medium">
-                        Music
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="fashion"
-                        name="fashion"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="fashion" className="font-medium">
-                        Fashion
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="gambling-betting"
-                        name="gambling-betting"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="gambling-betting" className="font-medium">
-                        Gambling/Betting
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="gaming"
-                        name="gaming"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="gaming" className="font-medium">
-                        Gaming
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="sports"
-                        name="sports"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="sports" className="font-medium">
-                        Sports
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="nft"
-                        name="nft"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="nft" className="font-medium">
-                        NFT
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="infrastructure"
-                        name="infrastructure"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="infrastructure" className="font-medium">
-                        Infrastructure
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="crypto"
-                        name="crypto"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="crypto" className="font-medium">
-                        Crypto
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="art"
-                        name="art"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label htmlFor="art" className="font-medium">
-                        Art
-                      </label>
-                    </div>
-                  </div>
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="fintech"
-                        name="fintech"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-dark-now dark:border-light-now text-yellow-now dark:text-green-now focus:ring-green-now dark:focus:ring-yellow-now"
-                      />
-                    </div>
-                    <div className="text-sm sm:text-base">
-                      <label htmlFor="fintech">Fintech</label>
-                    </div>
-                  </div>
+                  project?
+                </label>
+                <div className="mt-2">
+                  <select
+                    id="best-describes"
+                    name="best-describes"
+                    autoComplete="best-describes"
+                    className="block w-full rounded-md ring-1 ring-dark-now dark:ring-light-now bg-transparent py-2 pl-1 placeholder:text-green-now dark:placeholder:text-yellow-now text-sm sm:text-base"
+                  >
+                    <option>Events</option>
+                    <option>Marketing</option>
+                    <option>Advertising</option>
+                    <option>Media</option>
+                    <option>Non Profit</option>
+                    <option>Community</option>
+                    <option>Cultural</option>
+                    <option>Fashion</option>
+                    <option>Sports</option>
+                    <option>Gambling</option>
+                    <option>Social</option>
+                    <option>Music</option>
+                    <option>Gaming</option>
+                    <option>NFTs</option>
+                    <option>Infrastructure</option>
+                    <option>Crypto Coin</option>
+                    <option>Art</option>
+                    <option>Finance</option>
+                    <option>Security</option>
+                  </select>
                 </div>
-              </fieldset>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-4 flex items-center justify-end gap-2 mb-8">
-          <h5 className="text-sm sm:text-base">{result}</h5>
-          <button
-            type="button"
-            className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
-          >
-            Send Request
-          </button>
+          <div className="border-b border-dark-now dark:border-light-now">
+            <h2 className="text-xl sm:text-2xl font-judul text-green-now dark:text-yellow-now">
+              Submit Your Request
+            </h2>
+            <h3 className="block text-sm sm:text-base text-yellow-now dark:text-green-now font-judul border-b border-dark-now dark:border-light-now">
+              Double check your information. Make sure all information is
+              correct. After you send the request, we will get back to you as
+              soon as possible.
+            </h3>
+            <div className="grid grid-cols-1 gap-x-4 gap-y-4">
+              <div className="mt-4 flex items-center justify-end gap-2 mb-8">
+                <h5 className="text-sm sm:text-base">{result}</h5>
+                <button
+                  type="button"
+                  className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
+                >
+                  Send Request
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
     </div>
