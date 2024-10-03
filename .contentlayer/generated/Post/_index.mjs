@@ -4,5 +4,7 @@ import allEnergyGenerationWillBeSolarMdx from './all-energy-generation-will-be-s
 import fruitThatConnectsUsMdx from './fruit-that-connects-us.mdx.json' assert { type: 'json' }
 import manusiaDanPotensiKehancuranBumiMdx from './manusia-dan-potensi-kehancuran-bumi.mdx.json' assert { type: 'json' }
 import naNowNewsMdx from './na-now-news.mdx.json' assert { type: 'json' }
+import guideToSpotTradingCryptocurrencyMdx from './guide-to-spot-trading-cryptocurrency.mdx.json' assert { type: 'json' }
+import latestLeapInAiVideoGenerationMdx from './latest-leap-in-ai-video-generation.mdx.json' assert { type: 'json' }
 
-export const allPosts = [allEnergyGenerationWillBeSolarMdx, fruitThatConnectsUsMdx, manusiaDanPotensiKehancuranBumiMdx, naNowNewsMdx]
+export const allPosts = [allEnergyGenerationWillBeSolarMdx, fruitThatConnectsUsMdx, manusiaDanPotensiKehancuranBumiMdx, naNowNewsMdx, guideToSpotTradingCryptocurrencyMdx, latestLeapInAiVideoGenerationMdx]

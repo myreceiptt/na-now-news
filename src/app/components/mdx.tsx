@@ -109,7 +109,7 @@ const components = {
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <ul
       className={clsx(
-        "list-inside [&:not(:first-child)]:mt-2 list-disc",
+        "list-outside [&:not(:first-child)]:mt-2 list-disc pl-8",
         className
       )}
       {...props}
@@ -118,7 +118,7 @@ const components = {
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <ol
       className={clsx(
-        "list-inside [&:not(:first-child)]:mt-2 list-decimal",
+        "list-outside [&:not(:first-child)]:mt-2 list-decimal pl-8",
         className
       )}
       {...props}
