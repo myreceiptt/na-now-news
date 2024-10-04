@@ -1,47 +1,30 @@
-import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import PostList from "@/app/components/postlist";
 import Pagination from "@/app/components/pagination";
 import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const POSTS_PER_PAGE = 7;
 
 export const generateStaticParams = async () => {
-  const categories = Array.from(
-    new Set(
-      allPosts.flatMap((post) =>
-        post.categories.map((cat) => cat.toLowerCase())
-      )
-    )
-  );
-  return categories.map((category) => ({ category }));
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  return Array.from({ length: totalPages - 1 }, (_, i) => ({
+    page: `${i + 2}`,
+  }));
 };
 
-export const generateMetadata = ({
-  params,
-}: {
-  params: { category: string };
-}) => {
-  const category =
-    params.category.charAt(0).toUpperCase() + params.category.slice(1);
+export const generateMetadata = ({ params }: { params: { page: string } }) => {
   return {
     metadataBase: new URL("https://news.bananow.land/"),
     title: {
       template: "%s | Na Now News of BANANOW.LAND", // Included on each child page
-      default: "Na Now " + `${category}`, // Title on each page
+      default: "Na Now News Page " + `${params.page}`, // Title on each page
     },
     description:
-      "Here we share Na Now News about " +
-      `${category}` +
-      ". It can be crazy " +
-      `${category}` +
-      " or ordinary " +
-      `${category}` +
-      ". There are a lot of " +
-      `${category}` +
-      ". Let's dig in!", // Description for each page
+      "Here we share whatever we have done. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!", // Description for each page
     applicationName: "Na Now News of BANANOW.LAND",
     authors: [
       { name: "BANANOW.LAND", url: "https://www.bananow.land" },
@@ -50,8 +33,6 @@ export const generateMetadata = ({
     manifest: "/manifest.webmanifest",
     generator: "BANANOW.LAND",
     keywords: [
-      `${category}`,
-      `${category}` + " News",
       "Web3 News",
       "BANANOW LAND NFTs",
       "NFTs Project",
@@ -91,7 +72,7 @@ export const generateMetadata = ({
       },
     },
     alternates: {
-      canonical: "/category/" + `${params.category}`, // Canonical for each page
+      canonical: "/" + `${params.page}`, // Canonical for each page
       // languages: {
       //   // Only used when billingual page provided
       //   "en-US": "/en-US",
@@ -104,18 +85,10 @@ export const generateMetadata = ({
       telephone: false,
     },
     openGraph: {
-      title: "Na Now " + `${category}`, // Title on each page
+      default: "Na Now News Page " + `${params.page}`, // Title on each page
       description:
-        "Here we share Na Now News about " +
-        `${category}` +
-        ". It can be crazy " +
-        `${category}` +
-        " or ordinary " +
-        `${category}` +
-        ". There are a lot of " +
-        `${category}` +
-        ". Let's dig in!", // Description for each page
-      url: "https://news.bananow.land/category/" + `${params.category}`, // URL for each page
+        "Here we share whatever we have done. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!", // Description on each page
+      url: "https://news.bananow.land/" + `${params.page}`, // URL for each page
       siteName: "Na Now News of BANANOW.LAND",
       locale: "en-US",
       images: [
@@ -141,17 +114,9 @@ export const generateMetadata = ({
       siteId: "@bananow_land",
       creator: "@bananow_land",
       creatorId: "@bananow_land",
-      title: "Na Now " + `${category}`, // Title on each page
+      default: "Na Now News Page " + `${params.page}`, // Title on each page
       description:
-        "Hi, X People! Here we share Na Now News about " +
-        `${category}` +
-        ". It can be crazy " +
-        `${category}` +
-        " or ordinary " +
-        `${category}` +
-        ". There are a lot of " +
-        `${category}` +
-        ". Let's dig in!", // Description for each page
+        "Hi, X People! Here we share whatever we have done. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!", // Description on each page
       images: ["https://news.bananow.land/images/logos/na-now-news.svg"], // Must be an absolute URL
     },
     icons: {
@@ -166,47 +131,43 @@ export const generateMetadata = ({
   };
 };
 
-export default function CategoryPage({
-  params,
-}: {
-  params: { category: string };
-}) {
-  const category =
-    params.category.charAt(0).toUpperCase() + params.category.slice(1);
-  const filteredPosts = allPosts
-    .filter((post) =>
-      post.categories.map((cat) => cat.toLowerCase()).includes(params.category)
-    )
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+export default function HomePage({ params }: { params: { page: string } }) {
+  const currentPage = Number(params.page);
+  const sortedPosts = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date))
+  );
+  const totalPosts = sortedPosts.length;
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
-  if (filteredPosts.length === 0) {
+  // Check if the page parameter is a valid number
+  if (isNaN(currentPage)) {
     notFound();
   }
 
-  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  if (currentPage < 1) {
+    redirect("/"); // Redirect to the first page
+  }
+
+  if (currentPage > totalPages) {
+    redirect(`/${totalPages}`); // Redirect to the last page
+  }
+
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = sortedPosts.slice(startIndex, endIndex);
 
   return (
     <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">
       <Header />
       <main className="mx-auto max-w-3xl flex flex-col border-b border-dark-now dark:border-light-now">
-        <h1
-          id="top"
-          className="text-2xl sm:text-3xl text-center font-judul w-full mb-8"
-        >
-          <span className="text-green-now dark:text-yellow-now">Na</span>{" "}
-          <span className="text-yellow-now dark:text-green-now">Now</span>{" "}
-          <span className="text-green-now dark:text-yellow-now">
-            {category}
-          </span>
-        </h1>
-        <PostList posts={filteredPosts.slice(0, POSTS_PER_PAGE)} />
+        <PostList posts={currentPosts} />
         <h5 className="text-sm sm:text-base text-right mt-4">
           Let's dig into all the pages!
         </h5>
         <Pagination
-          currentPage={1}
+          currentPage={currentPage}
           totalPages={totalPages}
-          basePath={`/category/${params.category}/`}
+          basePath="./"
         />
       </main>
       <Footer />

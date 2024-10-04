@@ -130,7 +130,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   return (
     <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">
       <Header />
-      <main className="mx-auto max-w-3xl flex flex-col items-center gap-8">
+      <main className="mx-auto max-w-3xl flex flex-col border-b border-dark-now dark:border-light-now">
         <article className="border-b border-dark-now dark:border-light-now">
           <Image
             src={post.gambar}
@@ -150,31 +150,32 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </time>
           <Mdx code={post.body.code} />
-          <h4 className="text-sm sm:text-base mt-4">
-            Author:{" "}
-            <Link
-              href={`${post.link}`}
-              target="_blank"
-              className="text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now"
-            >
-              {post.penulis}
-            </Link>
-          </h4>
-          <h5 className="text-sm sm:text-base">
-            Published under these categories:
-          </h5>
-          <div className="flex flex-wrap gap-2 justify-items-start mt-2 mb-8">
-            {post.categories.map((category: string) => (
-              <Link
-                key={category}
-                href={`/category/${category.toLowerCase()}`}
-                className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
-              >
-                {category}
-              </Link>
-            ))}
-          </div>
         </article>
+
+        <h4 className="text-sm sm:text-base text-right mt-4">
+          Author:{" "}
+          <Link
+            href={`${post.link}`}
+            target="_blank"
+            className="text-green-now dark:text-yellow-now hover:text-yellow-now dark:hover:text-green-now"
+          >
+            {post.penulis}
+          </Link>
+        </h4>
+        <h5 className="text-sm sm:text-base text-right">
+          Published under these categories:
+        </h5>
+        <div className="flex flex-wrap gap-2 justify-end mt-2 mb-8">
+          {post.categories.map((category: string) => (
+            <Link
+              key={category}
+              href={`/category/${category.toLowerCase()}`}
+              className="bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now px-4 py-1 rounded-full text-xs sm:text-sm hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
+            >
+              {category}
+            </Link>
+          ))}
+        </div>
       </main>
       <Footer />
     </div>

@@ -1,10 +1,11 @@
-import { compareDesc, format, parseISO } from "date-fns";
+import { compareDesc } from "date-fns";
 import { allPosts } from "contentlayer/generated";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import PostList from "@/app/components/postlist";
 import Pagination from "@/app/components/pagination";
 import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const POSTS_PER_PAGE = 7;
 
@@ -16,13 +17,26 @@ export const generateStaticParams = async () => {
       )
     )
   );
-  return categories.map((category) => ({ category }));
+  const params = [];
+
+  for (const category of categories) {
+    const filteredPosts = allPosts.filter((post) =>
+      post.categories.map((cat) => cat.toLowerCase()).includes(category)
+    );
+    const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+
+    for (let page = 2; page <= totalPages; page++) {
+      params.push({ category, page: `${page}` });
+    }
+  }
+
+  return params;
 };
 
 export const generateMetadata = ({
   params,
 }: {
-  params: { category: string };
+  params: { category: string; page: string };
 }) => {
   const category =
     params.category.charAt(0).toUpperCase() + params.category.slice(1);
@@ -30,7 +44,7 @@ export const generateMetadata = ({
     metadataBase: new URL("https://news.bananow.land/"),
     title: {
       template: "%s | Na Now News of BANANOW.LAND", // Included on each child page
-      default: "Na Now " + `${category}`, // Title on each page
+      default: "Na Now " + `${category}` + " Page " + `${params.page}`, // Title on each page
     },
     description:
       "Here we share Na Now News about " +
@@ -50,8 +64,8 @@ export const generateMetadata = ({
     manifest: "/manifest.webmanifest",
     generator: "BANANOW.LAND",
     keywords: [
-      `${category}`,
-      `${category}` + " News",
+      params.category,
+      `${params.category} News`,
       "Web3 News",
       "BANANOW LAND NFTs",
       "NFTs Project",
@@ -91,7 +105,7 @@ export const generateMetadata = ({
       },
     },
     alternates: {
-      canonical: "/category/" + `${params.category}`, // Canonical for each page
+      canonical: "/category/" + `${category}` + "/" + `${params.page}`, // Canonical for each page
       // languages: {
       //   // Only used when billingual page provided
       //   "en-US": "/en-US",
@@ -104,7 +118,7 @@ export const generateMetadata = ({
       telephone: false,
     },
     openGraph: {
-      title: "Na Now " + `${category}`, // Title on each page
+      default: "Na Now " + `${category}` + " Page " + `${params.page}`, // Title on each page
       description:
         "Here we share Na Now News about " +
         `${category}` +
@@ -115,7 +129,11 @@ export const generateMetadata = ({
         ". There are a lot of " +
         `${category}` +
         ". Let's dig in!", // Description for each page
-      url: "https://news.bananow.land/category/" + `${params.category}`, // URL for each page
+      url:
+        "https://news.bananow.land/category/" +
+        `${category}` +
+        "/" +
+        `${params.page}`, // URL for each page
       siteName: "Na Now News of BANANOW.LAND",
       locale: "en-US",
       images: [
@@ -141,7 +159,7 @@ export const generateMetadata = ({
       siteId: "@bananow_land",
       creator: "@bananow_land",
       creatorId: "@bananow_land",
-      title: "Na Now " + `${category}`, // Title on each page
+      default: "Na Now " + `${category}` + " Page " + `${params.page}`, // Title on each page
       description:
         "Hi, X People! Here we share Na Now News about " +
         `${category}` +
@@ -169,28 +187,41 @@ export const generateMetadata = ({
 export default function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: { category: string; page: string };
 }) {
   const category =
     params.category.charAt(0).toUpperCase() + params.category.slice(1);
+  const currentPage = Number(params.page);
+
   const filteredPosts = allPosts
     .filter((post) =>
       post.categories.map((cat) => cat.toLowerCase()).includes(params.category)
     )
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
 
-  if (filteredPosts.length === 0) {
+  // Check if the page parameter is a valid number
+  if (isNaN(currentPage)) {
     notFound();
   }
 
-  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  if (currentPage < 1) {
+    redirect(`/category/${params.category}/`); // Redirect to the first page
+  }
+
+  if (currentPage > totalPages) {
+    redirect(`/category/${params.category}/${totalPages}`); // Redirect to the last page
+  }
+
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const currentPosts = filteredPosts.slice(startIndex, endIndex);
 
   return (
     <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">
       <Header />
       <main className="mx-auto max-w-3xl flex flex-col border-b border-dark-now dark:border-light-now">
         <h1
-          id="top"
           className="text-2xl sm:text-3xl text-center font-judul w-full mb-8"
         >
           <span className="text-green-now dark:text-yellow-now">Na</span>{" "}
@@ -199,12 +230,13 @@ export default function CategoryPage({
             {category}
           </span>
         </h1>
-        <PostList posts={filteredPosts.slice(0, POSTS_PER_PAGE)} />
+        {/* <PostList posts={filteredPosts.slice(0, POSTS_PER_PAGE)} /> */}
+        <PostList posts={currentPosts} />
         <h5 className="text-sm sm:text-base text-right mt-4">
           Let's dig into all the pages!
         </h5>
         <Pagination
-          currentPage={1}
+          currentPage={currentPage}
           totalPages={totalPages}
           basePath={`/category/${params.category}/`}
         />
