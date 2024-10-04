@@ -1,4 +1,4 @@
-import { compareDesc, format, parseISO } from "date-fns";
+import { compareDesc } from "date-fns";
 import { allPosts } from "contentlayer/generated";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
@@ -201,7 +201,7 @@ export default function CategoryPage({
         </h1>
         <PostList posts={filteredPosts.slice(0, POSTS_PER_PAGE)} />
         <h5 className="text-sm sm:text-base text-right mt-4">
-          Let's dig into all the pages!
+          Let&apos;s dig into all the pages!
         </h5>
         <Pagination
           currentPage={1}

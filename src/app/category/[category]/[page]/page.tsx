@@ -233,7 +233,7 @@ export default function CategoryPage({
         {/* <PostList posts={filteredPosts.slice(0, POSTS_PER_PAGE)} /> */}
         <PostList posts={currentPosts} />
         <h5 className="text-sm sm:text-base text-right mt-4">
-          Let's dig into all the pages!
+          Let&apos;s dig into all the pages!
         </h5>
         <Pagination
           currentPage={currentPage}

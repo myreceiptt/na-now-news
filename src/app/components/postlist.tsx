@@ -2,7 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 
-export default function PostList({ posts }: { posts: any[] }) {
+// Define an interface for your post object
+interface Post {
+  _id: string;
+  url: string;
+  gambar: string;
+  title: string;
+  date: string;
+  description: string;
+  categories: string[];
+}
+
+export default function PostList({ posts }: { posts: Post[] }) {
   const sortedPosts = posts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );

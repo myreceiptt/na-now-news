@@ -20,7 +20,7 @@ export default function HomePage() {
       <main className="mx-auto max-w-3xl flex flex-col border-b border-dark-now dark:border-light-now">
         <PostList posts={sortedPosts.slice(0, POSTS_PER_PAGE)} />
         <h5 className="text-sm sm:text-base text-right mt-4">
-          Let's dig into all the pages!
+          Let&apos;s dig into all the pages!
         </h5>
         <Pagination currentPage={1} totalPages={totalPages} basePath="./" />
       </main>

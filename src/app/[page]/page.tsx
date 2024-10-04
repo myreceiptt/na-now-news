@@ -162,7 +162,7 @@ export default function HomePage({ params }: { params: { page: string } }) {
       <main className="mx-auto max-w-3xl flex flex-col border-b border-dark-now dark:border-light-now">
         <PostList posts={currentPosts} />
         <h5 className="text-sm sm:text-base text-right mt-4">
-          Let's dig into all the pages!
+          Let&apos;s dig into all the pages!
         </h5>
         <Pagination
           currentPage={currentPage}
