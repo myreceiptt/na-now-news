@@ -5,7 +5,7 @@ import Footer from "@/app/components/footer";
 import PostList from "@/app/components/postlist";
 import Pagination from "@/app/components/pagination";
 
-const POSTS_PER_PAGE = 7;
+const POSTS_PER_PAGE = 4;
 
 export default function HomePage() {
   const sortedPosts = allPosts.sort((a, b) =>

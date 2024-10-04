@@ -6,7 +6,7 @@ import PostList from "@/app/components/postlist";
 import Pagination from "@/app/components/pagination";
 import { notFound } from "next/navigation";
 
-const POSTS_PER_PAGE = 7;
+const POSTS_PER_PAGE = 4;
 
 export const generateStaticParams = async () => {
   const categories = Array.from(
