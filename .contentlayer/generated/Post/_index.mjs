@@ -8,5 +8,7 @@ import identitasSatoshiNakamotoAkhirnyaTerungkapMdx from './identitas-satoshi-na
 import latestLeapInAiVideoGenerationMdx from './latest-leap-in-ai-video-generation.mdx.json' assert { type: 'json' }
 import manusiaDanPotensiKehancuranBumiMdx from './manusia-dan-potensi-kehancuran-bumi.mdx.json' assert { type: 'json' }
 import naNowNewsMdx from './na-now-news.mdx.json' assert { type: 'json' }
+import curahanHatiSiMesinPencariMdx from './curahan-hati-si-mesin-pencari.mdx.json' assert { type: 'json' }
+import transformasiIndustriGameDi_2024Mdx from './transformasi-industri-game-di-2024.mdx.json' assert { type: 'json' }
 
-export const allPosts = [allEnergyGenerationWillBeSolarMdx, dariBlockchainMenujuMasaDepanRitelMdx, fruitThatConnectsUsMdx, guideToSpotTradingCryptocurrencyMdx, identitasSatoshiNakamotoAkhirnyaTerungkapMdx, latestLeapInAiVideoGenerationMdx, manusiaDanPotensiKehancuranBumiMdx, naNowNewsMdx]
+export const allPosts = [allEnergyGenerationWillBeSolarMdx, dariBlockchainMenujuMasaDepanRitelMdx, fruitThatConnectsUsMdx, guideToSpotTradingCryptocurrencyMdx, identitasSatoshiNakamotoAkhirnyaTerungkapMdx, latestLeapInAiVideoGenerationMdx, manusiaDanPotensiKehancuranBumiMdx, naNowNewsMdx, curahanHatiSiMesinPencariMdx, transformasiIndustriGameDi_2024Mdx]

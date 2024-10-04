@@ -131,7 +131,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">
       <Header />
       <main className="mx-auto max-w-3xl flex flex-col border-b border-dark-now dark:border-light-now">
-        <article className="border-b border-dark-now dark:border-light-now">
+        <article className="border-b border-dark-now dark:border-light-now pb-4">
           <Image
             src={post.gambar}
             alt={post.title}
