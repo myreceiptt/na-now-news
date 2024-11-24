@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="flex gap-2 flex-wrap justify-center mb-8">
         <a
           className="rounded-full flex items-center justify-center gap-2 text-xs sm:text-sm py-2 px-5 bg-dark-now dark:bg-light-now text-light-now dark:text-dark-now hover:bg-yellow-now dark:hover:bg-green-now focus:bg-green-now dark:focus:bg-yellow-now hover:text-dark-now dark:hover:text-light-now focus:text-light-now dark:focus:text-dark-now"
-          href="https://heads.bananow.land/"
+          href="https://bananownfts.endhonesa.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -41,7 +41,7 @@ export default function Footer() {
       <div className="flex gap-2 flex-wrap justify-center mb-2 text-xs sm:text-sm">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/"
+          href="https://bananow.endhonesa.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -56,7 +56,7 @@ export default function Footer() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://gp.bananow.land/"
+          href="https://bananowgp.endhonesa.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -71,7 +71,7 @@ export default function Footer() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/privacy"
+          href="https://bananow.endhonesa.com/privacy"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -86,7 +86,7 @@ export default function Footer() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/terms"
+          href="https://bananow.endhonesa.com/terms"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -101,7 +101,7 @@ export default function Footer() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.bananow.land/#embassy"
+          href="https://bananow.endhonesa.com/#embassy"
           target="_blank"
           rel="noopener noreferrer"
         >
