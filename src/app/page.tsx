@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated";
+import { getAllPosts } from "@/lib/posts";
 import { compareDesc } from "date-fns";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
@@ -8,7 +8,7 @@ import Pagination from "@/app/components/pagination";
 const POSTS_PER_PAGE = 4;
 
 export default function HomePage() {
-  const sortedPosts = allPosts.sort((a, b) =>
+  const sortedPosts = getAllPosts().sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
   const totalPosts = sortedPosts.length;
