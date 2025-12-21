@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { compileMDX } from "next-mdx-remote/rsc";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import YouTube from "./youtube";
 import CustomLink from "./customlink";
 
@@ -148,12 +148,13 @@ const components = {
       typeof width === "number" ? width : parseInt(width as string, 10);
     const safeHeight =
       typeof height === "number" ? height : parseInt(height as string, 10);
+    const resolvedSrc = typeof src === "string" ? src : "/image/posts/the-fruit-that-connects-us.jpg";
     return (
       <span>
         <span>
           <Image
             priority
-            src={src}
+            src={resolvedSrc}
             alt={alt}
             width={safeWidth}
             height={safeHeight}
@@ -180,11 +181,10 @@ interface MdxProps {
   source: string;
 }
 
-export async function Mdx({ source }: MdxProps) {
-  const { content } = await compileMDX({
-    source,
-    components,
-  });
-
-  return <div className="mdx">{content}</div>;
+export function Mdx({ source }: MdxProps) {
+  return (
+    <div className="mdx">
+      <MDXRemote source={source} components={components} />
+    </div>
+  );
 }

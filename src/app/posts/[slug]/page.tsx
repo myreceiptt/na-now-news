@@ -6,12 +6,19 @@ import Image from "next/image";
 import Footer from "@/app/components/footer";
 import Header from "@/app/components/header";
 
+type PostParams = { slug: string };
+
 export const generateStaticParams = async () =>
   getAllPosts().map((post) => ({ slug: post.slug }));
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = getPostBySlug(params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+export const generateMetadata = async ({
+  params,
+}: {
+  params: PostParams | Promise<PostParams>;
+}) => {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) throw new Error(`Post not found for slug: ${slug}`);
   return {
     metadataBase: new URL("https://news.bananow.land/"),
     title: {
@@ -66,7 +73,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
       },
     },
     alternates: {
-      canonical: "/posts/" + `${params.slug}`, // Canonical for each page
+      canonical: "/posts/" + `${slug}`, // Canonical for each page
       // languages: {
       //   // Only used when billingual page provided
       //   "en-US": "/en-US",
@@ -81,7 +88,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
     openGraph: {
       title: post.title, // Title on each page
       description: post.description, // Description for each page
-      url: "https://news.bananow.land/posts/" + `${params.slug}`, // URL for each page
+      url: "https://news.bananow.land/posts/" + `${slug}`, // URL for each page
       siteName: "Na Now News of BANANOW.LAND",
       locale: "en-US",
       images: [
@@ -123,9 +130,14 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   };
 };
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = getPostBySlug(params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+const PostLayout = async ({
+  params,
+}: {
+  params: PostParams | Promise<PostParams>;
+}) => {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) throw new Error(`Post not found for slug: ${slug}`);
 
   return (
     <div className="flex flex-col gap-8 p-4 pb-20 sm:p-20">

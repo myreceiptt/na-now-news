@@ -8,6 +8,8 @@ import { notFound } from "next/navigation";
 
 const POSTS_PER_PAGE = 4;
 
+type CategoryParams = { category: string };
+
 export const generateStaticParams = async () => {
   const allPosts = getAllPosts();
   const categories = Array.from(
@@ -20,13 +22,14 @@ export const generateStaticParams = async () => {
   return categories.map((category) => ({ category }));
 };
 
-export const generateMetadata = ({
+export const generateMetadata = async ({
   params,
 }: {
-  params: { category: string };
+  params: CategoryParams | Promise<CategoryParams>;
 }) => {
+  const { category: categoryParam } = await params;
   const category =
-    params.category.charAt(0).toUpperCase() + params.category.slice(1);
+    categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
   return {
     metadataBase: new URL("https://news.bananow.land/"),
     title: {
@@ -92,7 +95,7 @@ export const generateMetadata = ({
       },
     },
     alternates: {
-      canonical: "/category/" + `${params.category}`, // Canonical for each page
+      canonical: "/category/" + `${categoryParam}`, // Canonical for each page
       // languages: {
       //   // Only used when billingual page provided
       //   "en-US": "/en-US",
@@ -116,7 +119,7 @@ export const generateMetadata = ({
         ". There are a lot of " +
         `${category}` +
         ". Let's dig in!", // Description for each page
-      url: "https://news.bananow.land/category/" + `${params.category}`, // URL for each page
+      url: "https://news.bananow.land/category/" + `${categoryParam}`, // URL for each page
       siteName: "Na Now News of BANANOW.LAND",
       locale: "en-US",
       images: [
@@ -167,16 +170,17 @@ export const generateMetadata = ({
   };
 };
 
-export default function CategoryPage({
+export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: CategoryParams | Promise<CategoryParams>;
 }) {
+  const { category: categoryParam } = await params;
   const category =
-    params.category.charAt(0).toUpperCase() + params.category.slice(1);
+    categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
   const filteredPosts = getAllPosts()
     .filter((post) =>
-      post.categories.map((cat) => cat.toLowerCase()).includes(params.category)
+      post.categories.map((cat) => cat.toLowerCase()).includes(categoryParam)
     )
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
@@ -207,7 +211,7 @@ export default function CategoryPage({
         <Pagination
           currentPage={1}
           totalPages={totalPages}
-          basePath={`/category/${params.category}/`}
+          basePath={`/category/${categoryParam}/`}
         />
       </main>
       <Footer />
