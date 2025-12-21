@@ -9,6 +9,8 @@ import { redirect } from "next/navigation";
 
 const POSTS_PER_PAGE = 4;
 
+type CategoryPageParams = { category: string; page: string };
+
 export const generateStaticParams = async () => {
   const allPosts = getAllPosts();
   const categories = Array.from(
@@ -34,18 +36,19 @@ export const generateStaticParams = async () => {
   return params;
 };
 
-export const generateMetadata = ({
+export const generateMetadata = async ({
   params,
 }: {
-  params: { category: string; page: string };
+  params: CategoryPageParams | Promise<CategoryPageParams>;
 }) => {
+  const { category: categoryParam, page } = await params;
   const category =
-    params.category.charAt(0).toUpperCase() + params.category.slice(1);
+    categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
   return {
     metadataBase: new URL("https://news.bananow.land/"),
     title: {
       template: "%s | Na Now News of BANANOW.LAND", // Included on each child page
-      default: "Na Now " + `${category}` + " Page " + `${params.page}`, // Title on each page
+      default: "Na Now " + `${category}` + " Page " + `${page}`, // Title on each page
     },
     description:
       "Here we share Na Now News about " +
@@ -65,8 +68,8 @@ export const generateMetadata = ({
     manifest: "/manifest.webmanifest",
     generator: "BANANOW.LAND",
     keywords: [
-      params.category,
-      `${params.category} News`,
+      categoryParam,
+      `${categoryParam} News`,
       "Web3 News",
       "BANANOW LAND NFTs",
       "NFTs Project",
@@ -106,7 +109,7 @@ export const generateMetadata = ({
       },
     },
     alternates: {
-      canonical: "/category/" + `${category}` + "/" + `${params.page}`, // Canonical for each page
+      canonical: "/category/" + `${category}` + "/" + `${page}`, // Canonical for each page
       // languages: {
       //   // Only used when billingual page provided
       //   "en-US": "/en-US",
@@ -119,7 +122,7 @@ export const generateMetadata = ({
       telephone: false,
     },
     openGraph: {
-      default: "Na Now " + `${category}` + " Page " + `${params.page}`, // Title on each page
+      default: "Na Now " + `${category}` + " Page " + `${page}`, // Title on each page
       description:
         "Here we share Na Now News about " +
         `${category}` +
@@ -134,7 +137,7 @@ export const generateMetadata = ({
         "https://news.bananow.land/category/" +
         `${category}` +
         "/" +
-        `${params.page}`, // URL for each page
+        `${page}`, // URL for each page
       siteName: "Na Now News of BANANOW.LAND",
       locale: "en-US",
       images: [
@@ -160,7 +163,7 @@ export const generateMetadata = ({
       siteId: "@bananow_land",
       creator: "@bananow_land",
       creatorId: "@bananow_land",
-      default: "Na Now " + `${category}` + " Page " + `${params.page}`, // Title on each page
+      default: "Na Now " + `${category}` + " Page " + `${page}`, // Title on each page
       description:
         "Hi, X People! Here we share Na Now News about " +
         `${category}` +
@@ -185,18 +188,19 @@ export const generateMetadata = ({
   };
 };
 
-export default function CategoryPage({
+export default async function CategoryPage({
   params,
 }: {
-  params: { category: string; page: string };
+  params: CategoryPageParams | Promise<CategoryPageParams>;
 }) {
+  const { category: categoryParam, page } = await params;
   const category =
-    params.category.charAt(0).toUpperCase() + params.category.slice(1);
-  const currentPage = Number(params.page);
+    categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
+  const currentPage = Number(page);
 
   const filteredPosts = getAllPosts()
     .filter((post) =>
-      post.categories.map((cat) => cat.toLowerCase()).includes(params.category)
+      post.categories.map((cat) => cat.toLowerCase()).includes(categoryParam)
     )
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
@@ -207,11 +211,11 @@ export default function CategoryPage({
   }
 
   if (currentPage < 1) {
-    redirect(`/category/${params.category}/`); // Redirect to the first page
+    redirect(`/category/${categoryParam}/`); // Redirect to the first page
   }
 
   if (currentPage > totalPages) {
-    redirect(`/category/${params.category}/${totalPages}`); // Redirect to the last page
+    redirect(`/category/${categoryParam}/${totalPages}`); // Redirect to the last page
   }
 
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
@@ -239,7 +243,7 @@ export default function CategoryPage({
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
-          basePath={`/category/${params.category}/`}
+          basePath={`/category/${categoryParam}/`}
         />
       </main>
       <Footer />

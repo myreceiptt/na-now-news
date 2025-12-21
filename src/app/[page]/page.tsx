@@ -9,6 +9,8 @@ import { redirect } from "next/navigation";
 
 const POSTS_PER_PAGE = 4;
 
+type PageParams = { page: string };
+
 export const generateStaticParams = async () => {
   const allPosts = getAllPosts();
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
@@ -17,12 +19,17 @@ export const generateStaticParams = async () => {
   }));
 };
 
-export const generateMetadata = ({ params }: { params: { page: string } }) => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: PageParams | Promise<PageParams>;
+}) => {
+  const { page } = await params;
   return {
     metadataBase: new URL("https://news.bananow.land/"),
     title: {
       template: "%s | Na Now News of BANANOW.LAND", // Included on each child page
-      default: "Na Now News Page " + `${params.page}`, // Title on each page
+      default: "Na Now News Page " + `${page}`, // Title on each page
     },
     description:
       "Here we share whatever we have done. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!", // Description for each page
@@ -73,7 +80,7 @@ export const generateMetadata = ({ params }: { params: { page: string } }) => {
       },
     },
     alternates: {
-      canonical: "/" + `${params.page}`, // Canonical for each page
+      canonical: "/" + `${page}`, // Canonical for each page
       // languages: {
       //   // Only used when billingual page provided
       //   "en-US": "/en-US",
@@ -86,10 +93,10 @@ export const generateMetadata = ({ params }: { params: { page: string } }) => {
       telephone: false,
     },
     openGraph: {
-      default: "Na Now News Page " + `${params.page}`, // Title on each page
+      default: "Na Now News Page " + `${page}`, // Title on each page
       description:
         "Here we share whatever we have done. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!", // Description on each page
-      url: "https://news.bananow.land/" + `${params.page}`, // URL for each page
+      url: "https://news.bananow.land/" + `${page}`, // URL for each page
       siteName: "Na Now News of BANANOW.LAND",
       locale: "en-US",
       images: [
@@ -115,7 +122,7 @@ export const generateMetadata = ({ params }: { params: { page: string } }) => {
       siteId: "@bananow_land",
       creator: "@bananow_land",
       creatorId: "@bananow_land",
-      default: "Na Now News Page " + `${params.page}`, // Title on each page
+      default: "Na Now News Page " + `${page}`, // Title on each page
       description:
         "Hi, X People! Here we share whatever we have done. It can be crazy nothing or ordinary something. There are a lot of them. Let's dig in!", // Description on each page
       images: ["https://news.bananow.land/images/logos/na-now-news.svg"], // Must be an absolute URL
@@ -132,8 +139,13 @@ export const generateMetadata = ({ params }: { params: { page: string } }) => {
   };
 };
 
-export default function HomePage({ params }: { params: { page: string } }) {
-  const currentPage = Number(params.page);
+export default async function HomePage({
+  params,
+}: {
+  params: PageParams | Promise<PageParams>;
+}) {
+  const { page } = await params;
+  const currentPage = Number(page);
   const sortedPosts = getAllPosts().sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
