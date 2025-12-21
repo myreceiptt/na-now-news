@@ -47,8 +47,8 @@ export default function Footer() {
         >
           <Image
             aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
+            src="/favicon/favicon-32x32.png"
+            alt="BANANOW logomark"
             width={16}
             height={16}
           />
@@ -62,8 +62,8 @@ export default function Footer() {
         >
           <Image
             aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
+            src="/favicon/favicon-32x32.png"
+            alt="BANANOW logomark"
             width={16}
             height={16}
           />
@@ -77,8 +77,8 @@ export default function Footer() {
         >
           <Image
             aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
+            src="/favicon/favicon-32x32.png"
+            alt="BANANOW logomark"
             width={16}
             height={16}
           />
@@ -92,8 +92,8 @@ export default function Footer() {
         >
           <Image
             aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
+            src="/favicon/favicon-32x32.png"
+            alt="BANANOW logomark"
             width={16}
             height={16}
           />
@@ -107,8 +107,8 @@ export default function Footer() {
         >
           <Image
             aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
+            src="/favicon/favicon-32x32.png"
+            alt="BANANOW logomark"
             width={16}
             height={16}
           />
