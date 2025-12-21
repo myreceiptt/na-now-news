@@ -1,5 +1,5 @@
 import { compareDesc } from "date-fns";
-import { allPosts } from "contentlayer/generated";
+import { getAllPosts } from "@/lib/posts";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import PostList from "@/app/components/postlist";
@@ -10,6 +10,7 @@ import { redirect } from "next/navigation";
 const POSTS_PER_PAGE = 4;
 
 export const generateStaticParams = async () => {
+  const allPosts = getAllPosts();
   const categories = Array.from(
     new Set(
       allPosts.flatMap((post) =>
@@ -193,7 +194,7 @@ export default function CategoryPage({
     params.category.charAt(0).toUpperCase() + params.category.slice(1);
   const currentPage = Number(params.page);
 
-  const filteredPosts = allPosts
+  const filteredPosts = getAllPosts()
     .filter((post) =>
       post.categories.map((cat) => cat.toLowerCase()).includes(params.category)
     )

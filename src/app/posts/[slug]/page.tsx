@@ -1,5 +1,5 @@
 import { format, parseISO } from "date-fns";
-import { allPosts } from "contentlayer/generated";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { Mdx } from "@/app/components/mdx";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,10 +7,10 @@ import Footer from "@/app/components/footer";
 import Header from "@/app/components/header";
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+  getAllPosts().map((post) => ({ slug: post.slug }));
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = getPostBySlug(params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
   return {
     metadataBase: new URL("https://news.bananow.land/"),
@@ -124,7 +124,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = getPostBySlug(params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
 
   return (
@@ -149,7 +149,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           >
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </time>
-          <Mdx code={post.body.code} />
+          <Mdx source={post.body} />
         </article>
 
         <h4 className="text-sm sm:text-base text-right mt-4">

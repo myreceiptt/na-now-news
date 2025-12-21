@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { compileMDX } from "next-mdx-remote/rsc";
 import YouTube from "./youtube";
 import CustomLink from "./customlink";
 
@@ -177,15 +177,14 @@ const components = {
 };
 
 interface MdxProps {
-  code: string;
+  source: string;
 }
 
-export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code);
+export async function Mdx({ source }: MdxProps) {
+  const { content } = await compileMDX({
+    source,
+    components,
+  });
 
-  return (
-    <div className="mdx">
-      <Component components={components} />
-    </div>
-  );
+  return <div className="mdx">{content}</div>;
 }

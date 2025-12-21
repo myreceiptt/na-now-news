@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated";
+import { getAllPosts } from "@/lib/posts";
 import { compareDesc } from "date-fns";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
@@ -10,6 +10,7 @@ import { redirect } from "next/navigation";
 const POSTS_PER_PAGE = 4;
 
 export const generateStaticParams = async () => {
+  const allPosts = getAllPosts();
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
   return Array.from({ length: totalPages - 1 }, (_, i) => ({
     page: `${i + 2}`,
@@ -133,7 +134,7 @@ export const generateMetadata = ({ params }: { params: { page: string } }) => {
 
 export default function HomePage({ params }: { params: { page: string } }) {
   const currentPage = Number(params.page);
-  const sortedPosts = allPosts.sort((a, b) =>
+  const sortedPosts = getAllPosts().sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
   const totalPosts = sortedPosts.length;

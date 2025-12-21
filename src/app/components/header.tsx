@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { compareDesc } from "date-fns";
-import { allPosts } from "contentlayer/generated";
+import { getAllPosts } from "@/lib/posts";
 
 export default function Header() {
-  const posts = allPosts.sort((a, b) =>
+  const posts = getAllPosts().sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
 
