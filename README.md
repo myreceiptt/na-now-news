@@ -10,7 +10,7 @@ This repo is intended to stay evergreen while remaining production-safe.
 
 ### Runtime
 
-- Node: **24.x**
+- Node: **24.x** (see `.nvmrc` and `package.json#engines`)
 - Package manager:
 
   - **NPM** (lockfile: `package-lock.json`)
@@ -44,6 +44,7 @@ This repo is intended to stay evergreen while remaining production-safe.
    - `npm audit --audit-level=moderate`
    - ~~yarn audit~~
    - ~~pnpm audit~~
+   - `npm run lint`
    - `npm run build`
    - ~~yarn build~~
    - ~~pnpm build~~
