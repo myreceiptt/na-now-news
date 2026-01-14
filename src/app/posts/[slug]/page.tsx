@@ -29,7 +29,7 @@ export const generateMetadata = async ({
     applicationName: "Na Now News of BANANOW.LAND",
     authors: [
       { name: post.penulis, url: post.link },
-      // { name: "Prof. NOTA", url: "https://nota.straight-line.org" },
+      // { name: "Prof. NOTA", url: "https://nota.endhonesa.com" },
     ],
     manifest: "/manifest.webmanifest",
     generator: "BANANOW.LAND",

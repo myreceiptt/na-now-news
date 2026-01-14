@@ -71,7 +71,7 @@ Examples:
 
 > Shush, We are playing, learning, and working. 🤫 🤫 🤫 🤫
 
-- 😄 &nbsp; We are [Prof. NOTA](https://deeplinks.straight-line.org/), per/pers.
+- 😄 &nbsp; We are [Prof. NOTA](https://deeplink.endhonesa.com/), per/pers.
 - 🤙 &nbsp; We are currently playing.
 - 🌱 &nbsp; We are currently learning.
 - 🔭 &nbsp; We are currently working.
@@ -79,7 +79,7 @@ Examples:
 - 🤔 &nbsp; We are not looking for help.
 - 💬 &nbsp; Don't ask us about that.
 - 📫 &nbsp; Don't try to reach us too.
-- ⚡ &nbsp; Fun fact: [The King's NFTs project](https://iqraa.straight-line.org/the-kings-nfts/)
+- ⚡ &nbsp; Fun fact: [The King's NFTs project](https://docs.endhonesa.com/)
 
 > Here are some ideas to get you started:
 
@@ -109,9 +109,9 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 > Regards
 >
-> [Prof. NOTA](https://deeplinks.straight-line.org/)
+> [Prof. NOTA](https://deeplink.endhonesa.com/)
 >
-> [init.straight-line.org](https://init.straight-line.org/)
+> [init.endhonesa.com](https://init.endhonesa.com/)
 
 <!--
 **myreceiptt/myreceiptt** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on Prof. NOTA's GitHub profile.
