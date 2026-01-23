@@ -1,5 +1,28 @@
 # Na Now News of BANANOW Land
 
+## About This Repo
+
+`na-now-news` is the news and publishing site for BANANOW Land. It serves as a lightweight editorial platform where we publish posts and updates, organize content by category, and provide a fast, SEO-friendly reading experience.
+
+### Purpose & Scope
+
+- Publish articles and announcements for the BANANOW universe.
+- Keep content structured and easy to navigate (posts, categories, pagination).
+- Maintain a stable, production-ready site with predictable builds and deployments.
+
+### Technology
+
+- Framework: **Next.js** + **React**
+- Content: **MDX/Markdown-based** posts (built-time rendering and static generation where appropriate)
+- Styling: **Tailwind CSS**
+- Tooling: **npm**, **ESLint**, **TypeScript**
+- Deployment: **Vercel**
+
+### How We Maintain Quality
+
+- We follow **Prof. NOTA Evergreen Standard**: safe monthly updates and scheduled quarterly majors, keeping Node version for Vercel compatibility.
+- We validate changes with audit + lint + build, and document runs under `EVERGREENING/completion-log-*.md`.
+
 ---
 
 ---
@@ -68,44 +91,6 @@ Examples:
 ---
 
 ---
-
-> Shush, We are playing, learning, and working. 🤫 🤫 🤫 🤫
-
-- 😄 &nbsp; We are [Prof. NOTA](https://deeplink.endhonesa.com/), per/pers.
-- 🤙 &nbsp; We are currently playing.
-- 🌱 &nbsp; We are currently learning.
-- 🔭 &nbsp; We are currently working.
-- 👯 &nbsp; We are not looking to collaborate.
-- 🤔 &nbsp; We are not looking for help.
-- 💬 &nbsp; Don't ask us about that.
-- 📫 &nbsp; Don't try to reach us too.
-- ⚡ &nbsp; Fun fact: [The King's NFTs project](https://docs.endhonesa.com/)
-
-> Here are some ideas to get you started:
-
-```coffeescript
-This is the repos of the frontend of the website of the Na Now News of the BANANOW.LAND of the ENDHONESA, the only country in The Melting Land. Read all of it, OiOi!
-```
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 > Regards
 >
