@@ -147,7 +147,7 @@ const PostLayout = async ({
           <Image
             src={post.gambar}
             alt={post.title}
-            className="rounded-md mb-4 aspect-[3/1] w-full h-full object-cover object-center"
+            className="rounded-md mb-4 aspect-3/1 w-full h-full object-cover object-center"
             width={768}
             height={256}
             priority
